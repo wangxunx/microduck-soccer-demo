@@ -1,0 +1,548 @@
+{
+ "mujoco(game)": {
+  "C_football|left|-0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 44.009694303082995,
+   "robot_drift_m": 0.26173973105429565,
+   "hit": true,
+   "t_first_move": 0.2,
+   "peak_speed": 2.688268050403348,
+   "dir_deg": -3.4471346811404624,
+   "dist_end_m": 5.69103335197432
+  },
+  "C_football|left|-0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 44.71694164888837,
+   "robot_drift_m": 0.37292505371895573,
+   "hit": true,
+   "t_first_move": 0.22,
+   "peak_speed": 2.553990936446712,
+   "dir_deg": -11.274123859082545,
+   "dist_end_m": 5.475587019128776
+  },
+  "C_football|left|-0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 47.19219986227273,
+   "robot_drift_m": 0.283261286804976,
+   "hit": true,
+   "t_first_move": 0.24,
+   "peak_speed": 2.3652249345889915,
+   "dir_deg": -7.388002239562135,
+   "dist_end_m": 4.786223104828406
+  },
+  "C_football|left|+0.000|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 44.69843108472401,
+   "robot_drift_m": 0.35371294074560555,
+   "hit": true,
+   "t_first_move": 0.26,
+   "peak_speed": 2.5963762177794756,
+   "dir_deg": -11.708568456617547,
+   "dist_end_m": 5.4969522563206334
+  },
+  "C_football|left|+0.000|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 44.90516933390635,
+   "robot_drift_m": 0.2969058311319651,
+   "hit": true,
+   "t_first_move": 0.28,
+   "peak_speed": 2.475284488710465,
+   "dir_deg": -18.983138326407836,
+   "dist_end_m": 5.456256493977907
+  },
+  "C_football|left|+0.000|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 44.68445086797576,
+   "robot_drift_m": 0.27650906088197336,
+   "hit": true,
+   "t_first_move": 0.3,
+   "peak_speed": 2.5797795413857196,
+   "dir_deg": -14.047565553472479,
+   "dist_end_m": 5.513937014255766
+  },
+  "C_football|left|+0.015|-0.015": {
+   "falls": 1,
+   "tilt_max_deg": 78.1347987080991,
+   "robot_drift_m": 0.29942798990417757,
+   "hit": true,
+   "t_first_move": 0.28,
+   "peak_speed": 2.704600395825095,
+   "dir_deg": -16.527041470787513,
+   "dist_end_m": 5.945493968230692
+  },
+  "C_football|left|+0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 44.62564203553127,
+   "robot_drift_m": 0.2854232323432581,
+   "hit": true,
+   "t_first_move": 0.3,
+   "peak_speed": 2.5800895063512397,
+   "dir_deg": -16.209187190699687,
+   "dist_end_m": 5.531229342772657
+  },
+  "C_football|left|+0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 45.8320452708241,
+   "robot_drift_m": 0.29280219842345856,
+   "hit": true,
+   "t_first_move": 0.32,
+   "peak_speed": 2.639839708634306,
+   "dir_deg": -16.25028545829697,
+   "dist_end_m": 5.72669941995446
+  },
+  "C_football|right|-0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 44.053112640861286,
+   "robot_drift_m": 0.2099895885644322,
+   "hit": true,
+   "t_first_move": 0.2,
+   "peak_speed": 2.6733147777527946,
+   "dir_deg": -5.746213520656089,
+   "dist_end_m": 5.789276382397056
+  },
+  "C_football|right|-0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 45.665875759374714,
+   "robot_drift_m": 0.18785605289228416,
+   "hit": true,
+   "t_first_move": 0.16,
+   "peak_speed": 2.7221347437222927,
+   "dir_deg": -1.7469323201140456,
+   "dist_end_m": 5.916508558406442
+  },
+  "C_football|right|-0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 46.53599864059677,
+   "robot_drift_m": 0.21834757428443485,
+   "hit": true,
+   "t_first_move": 0.16,
+   "peak_speed": 2.7398459065898613,
+   "dir_deg": 0.24218109742427985,
+   "dist_end_m": 5.866030713424316
+  },
+  "C_football|right|+0.000|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 44.18212735560252,
+   "robot_drift_m": 0.29197833932743394,
+   "hit": true,
+   "t_first_move": 0.22,
+   "peak_speed": 2.7951246213744048,
+   "dir_deg": -2.638148725594092,
+   "dist_end_m": 6.06050658810533
+  },
+  "C_football|right|+0.000|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 44.23269442838029,
+   "robot_drift_m": 0.26907316222304806,
+   "hit": true,
+   "t_first_move": 0.22,
+   "peak_speed": 2.780498598690844,
+   "dir_deg": -3.9270495922150443,
+   "dist_end_m": 6.02251238107419
+  },
+  "C_football|right|+0.000|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 46.016234162967066,
+   "robot_drift_m": 0.22468915636363265,
+   "hit": true,
+   "t_first_move": 0.24,
+   "peak_speed": 2.674816925331025,
+   "dir_deg": -10.54823843472034,
+   "dist_end_m": 5.732555281868445
+  },
+  "C_football|right|+0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 46.446351595986236,
+   "robot_drift_m": 0.22649510115195162,
+   "hit": true,
+   "t_first_move": 0.24,
+   "peak_speed": 2.791852540742218,
+   "dir_deg": -0.5914819634379727,
+   "dist_end_m": 5.968088964527989
+  },
+  "C_football|right|+0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 43.73646312435127,
+   "robot_drift_m": 0.24263207774959836,
+   "hit": true,
+   "t_first_move": 0.24,
+   "peak_speed": 2.839143542304233,
+   "dir_deg": -2.132306753547072,
+   "dist_end_m": 6.163856746439045
+  },
+  "C_football|right|+0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 46.997621691576875,
+   "robot_drift_m": 0.24299539379142063,
+   "hit": true,
+   "t_first_move": 0.26,
+   "peak_speed": 2.880839067604593,
+   "dir_deg": -4.094984466849139,
+   "dist_end_m": 6.249561910819786
+  }
+ },
+ "genesis_native": {
+  "C_football|left|-0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 43.68611788164413,
+   "robot_drift_m": 0.34511565199306116,
+   "hit": true,
+   "t_first_move": 0.18,
+   "peak_speed": 2.5603743219184296,
+   "dir_deg": 3.3181533134471484,
+   "dist_end_m": 7.717239024490276
+  },
+  "C_football|left|-0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 43.727071401713566,
+   "robot_drift_m": 0.3850313959171543,
+   "hit": true,
+   "t_first_move": 0.2,
+   "peak_speed": 2.49770109816125,
+   "dir_deg": 2.4630062202110357,
+   "dist_end_m": 7.523547381088179
+  },
+  "C_football|left|-0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 44.11967018523444,
+   "robot_drift_m": 0.32193094240224046,
+   "hit": true,
+   "t_first_move": 0.2,
+   "peak_speed": 2.6975573847142256,
+   "dir_deg": -0.576429932131196,
+   "dist_end_m": 8.329655113934571
+  },
+  "C_football|left|+0.000|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 44.38775928641801,
+   "robot_drift_m": 0.2805166626393076,
+   "hit": true,
+   "t_first_move": 0.22,
+   "peak_speed": 2.4184726413898847,
+   "dir_deg": 3.191875642296328,
+   "dist_end_m": 7.339084552452514
+  },
+  "C_football|left|+0.000|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 44.40675727724116,
+   "robot_drift_m": 0.28207021772459534,
+   "hit": true,
+   "t_first_move": 0.24,
+   "peak_speed": 2.4755589691185325,
+   "dir_deg": 5.620002619794572,
+   "dist_end_m": 7.56853623826029
+  },
+  "C_football|left|+0.000|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 61.26787378437494,
+   "robot_drift_m": 0.27506287351108627,
+   "hit": true,
+   "t_first_move": 0.28,
+   "peak_speed": 2.635806218049426,
+   "dir_deg": -5.022956335169666,
+   "dist_end_m": 8.17832515249604
+  },
+  "C_football|left|+0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 43.50067722206158,
+   "robot_drift_m": 0.40418462628926594,
+   "hit": true,
+   "t_first_move": 0.26,
+   "peak_speed": 2.540642627380254,
+   "dir_deg": -4.474378821619262,
+   "dist_end_m": 7.710849841785385
+  },
+  "C_football|left|+0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 44.058728545573736,
+   "robot_drift_m": 0.37741292907158086,
+   "hit": true,
+   "t_first_move": 0.28,
+   "peak_speed": 2.6506653679667047,
+   "dir_deg": -10.756489928693178,
+   "dist_end_m": 8.253624377635349
+  },
+  "C_football|left|+0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 45.71785359418431,
+   "robot_drift_m": 0.2536278739690845,
+   "hit": true,
+   "t_first_move": 0.28,
+   "peak_speed": 2.3731616638950674,
+   "dir_deg": -0.4214137070971293,
+   "dist_end_m": 7.172232737865681
+  },
+  "C_football|right|-0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 58.52073435139283,
+   "robot_drift_m": 0.2384762758368661,
+   "hit": true,
+   "t_first_move": 0.18,
+   "peak_speed": 2.7306443608326925,
+   "dir_deg": -0.26429794354215425,
+   "dist_end_m": 8.593491708476895
+  },
+  "C_football|right|-0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 46.21159385459814,
+   "robot_drift_m": 0.23377997191681962,
+   "hit": true,
+   "t_first_move": 0.14,
+   "peak_speed": 2.770000589946946,
+   "dir_deg": 3.487329591011626,
+   "dist_end_m": 8.514080052769689
+  },
+  "C_football|right|-0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 52.660253231917224,
+   "robot_drift_m": 0.26715138566942204,
+   "hit": true,
+   "t_first_move": 0.14,
+   "peak_speed": 2.7663959991072775,
+   "dir_deg": 3.3608927948809635,
+   "dist_end_m": 8.43994455641018
+  },
+  "C_football|right|+0.000|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 58.636119008531544,
+   "robot_drift_m": 0.2249035259637043,
+   "hit": true,
+   "t_first_move": 0.22,
+   "peak_speed": 2.66451387870834,
+   "dir_deg": -4.236582123553341,
+   "dist_end_m": 8.339167069854492
+  },
+  "C_football|right|+0.000|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 49.31568216699896,
+   "robot_drift_m": 0.18409215128225243,
+   "hit": true,
+   "t_first_move": 0.22,
+   "peak_speed": 2.826094980455404,
+   "dir_deg": -1.062929709770229,
+   "dist_end_m": 8.797622835934781
+  },
+  "C_football|right|+0.000|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 44.21333281854124,
+   "robot_drift_m": 0.23233672411218642,
+   "hit": true,
+   "t_first_move": 0.22,
+   "peak_speed": 2.5928047139677393,
+   "dir_deg": -10.023048957528738,
+   "dist_end_m": 8.112300903048363
+  },
+  "C_football|right|+0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 59.827625479969434,
+   "robot_drift_m": 0.22726585264792684,
+   "hit": true,
+   "t_first_move": 0.24,
+   "peak_speed": 2.8178011092855035,
+   "dir_deg": -5.798734593024238,
+   "dist_end_m": 8.631810366485865
+  },
+  "C_football|right|+0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 66.67890171678332,
+   "robot_drift_m": 0.17668773646340627,
+   "hit": true,
+   "t_first_move": 0.24,
+   "peak_speed": 2.8311686036604784,
+   "dir_deg": -4.044333041995808,
+   "dist_end_m": 8.680336267187794
+  },
+  "C_football|right|+0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 46.722954539318344,
+   "robot_drift_m": 0.24926400687632067,
+   "hit": true,
+   "t_first_move": 0.24,
+   "peak_speed": 2.692650841605414,
+   "dir_deg": -9.32702695778506,
+   "dist_end_m": 8.419369399471867
+  }
+ },
+ "genesis_rollfric": {
+  "C_football|left|-0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 43.36853919030445,
+   "robot_drift_m": 0.28814502483722654,
+   "hit": true,
+   "t_first_move": 0.18,
+   "peak_speed": 2.4125157610424295,
+   "dir_deg": 6.322142113748272,
+   "dist_end_m": 4.708267918485143
+  },
+  "C_football|left|-0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 52.31549034323036,
+   "robot_drift_m": 0.27873512598372163,
+   "hit": true,
+   "t_first_move": 0.2,
+   "peak_speed": 2.4326497113076377,
+   "dir_deg": 7.384461945852983,
+   "dist_end_m": 4.774075968080892
+  },
+  "C_football|left|-0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 43.30501299063857,
+   "robot_drift_m": 0.2966409973251989,
+   "hit": true,
+   "t_first_move": 0.2,
+   "peak_speed": 2.705721924747327,
+   "dir_deg": 1.984772977705257,
+   "dist_end_m": 5.782363840111477
+  },
+  "C_football|left|+0.000|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 41.19292473529144,
+   "robot_drift_m": 0.2978937706541024,
+   "hit": true,
+   "t_first_move": 0.22,
+   "peak_speed": 2.4480399901723207,
+   "dir_deg": 6.118022334411756,
+   "dist_end_m": 4.77781538582524
+  },
+  "C_football|left|+0.000|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 39.77028785316425,
+   "robot_drift_m": 0.25669917689183663,
+   "hit": true,
+   "t_first_move": 0.24,
+   "peak_speed": 2.13562666298277,
+   "dir_deg": 8.89326493087128,
+   "dist_end_m": 4.038398300439795
+  },
+  "C_football|left|+0.000|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 41.57117679809736,
+   "robot_drift_m": 0.2969462267994696,
+   "hit": true,
+   "t_first_move": 0.28,
+   "peak_speed": 2.6384878198835118,
+   "dir_deg": -3.934807144349303,
+   "dist_end_m": 5.647383439411091
+  },
+  "C_football|left|+0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 47.28352568365731,
+   "robot_drift_m": 0.23986024938471381,
+   "hit": true,
+   "t_first_move": 0.26,
+   "peak_speed": 2.538141581356423,
+   "dir_deg": -3.740457977415883,
+   "dist_end_m": 5.016014442436692
+  },
+  "C_football|left|+0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 45.45248834056888,
+   "robot_drift_m": 0.513300491342175,
+   "hit": true,
+   "t_first_move": 0.28,
+   "peak_speed": 2.672771259463854,
+   "dir_deg": -9.922483873700372,
+   "dist_end_m": 5.726859148645893
+  },
+  "C_football|left|+0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 45.02938200881356,
+   "robot_drift_m": 0.35962541508093504,
+   "hit": true,
+   "t_first_move": 0.28,
+   "peak_speed": 2.3735703781369497,
+   "dir_deg": 0.25470845118274954,
+   "dist_end_m": 4.566716206517968
+  },
+  "C_football|right|-0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 45.76335401605404,
+   "robot_drift_m": 0.21520991477179263,
+   "hit": true,
+   "t_first_move": 0.18,
+   "peak_speed": 2.723584660617615,
+   "dir_deg": 0.46140840711302317,
+   "dist_end_m": 5.815858260378425
+  },
+  "C_football|right|-0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 62.61204771948789,
+   "robot_drift_m": 0.24453452292022065,
+   "hit": true,
+   "t_first_move": 0.14,
+   "peak_speed": 2.7647625950377126,
+   "dir_deg": 4.035862471797859,
+   "dist_end_m": 5.972938525540958
+  },
+  "C_football|right|-0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 43.53246414504969,
+   "robot_drift_m": 0.2585204455387277,
+   "hit": true,
+   "t_first_move": 0.14,
+   "peak_speed": 2.73577990732955,
+   "dir_deg": 2.7424479294278634,
+   "dist_end_m": 5.829778878271608
+  },
+  "C_football|right|+0.000|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 43.23722939372894,
+   "robot_drift_m": 0.2926530418980489,
+   "hit": true,
+   "t_first_move": 0.22,
+   "peak_speed": 2.667254618968318,
+   "dir_deg": -3.816122194507498,
+   "dist_end_m": 5.6499136776536325
+  },
+  "C_football|right|+0.000|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 64.91162928005367,
+   "robot_drift_m": 0.18264229726128425,
+   "hit": true,
+   "t_first_move": 0.22,
+   "peak_speed": 2.8287297065689194,
+   "dir_deg": -0.7416705649256887,
+   "dist_end_m": 6.137275482949381
+  },
+  "C_football|right|+0.000|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 43.57876969900219,
+   "robot_drift_m": 0.23742633174495698,
+   "hit": true,
+   "t_first_move": 0.22,
+   "peak_speed": 2.7212987281694416,
+   "dir_deg": -8.155317959891676,
+   "dist_end_m": 5.8047191405689755
+  },
+  "C_football|right|+0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 61.92043561665338,
+   "robot_drift_m": 0.20209252192253827,
+   "hit": true,
+   "t_first_move": 0.24,
+   "peak_speed": 2.8215506274346933,
+   "dir_deg": -5.720269017604469,
+   "dist_end_m": 6.076865211877341
+  },
+  "C_football|right|+0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 61.580932464799815,
+   "robot_drift_m": 0.19396053807161662,
+   "hit": true,
+   "t_first_move": 0.24,
+   "peak_speed": 2.8275376600555986,
+   "dir_deg": -3.995159455881892,
+   "dist_end_m": 6.085961786187897
+  },
+  "C_football|right|+0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 42.93684848374739,
+   "robot_drift_m": 0.20931095151736623,
+   "hit": true,
+   "t_first_move": 0.24,
+   "peak_speed": 2.684706990773917,
+   "dir_deg": -8.676909580339311,
+   "dist_end_m": 5.742833919644631
+  }
+ }
+}

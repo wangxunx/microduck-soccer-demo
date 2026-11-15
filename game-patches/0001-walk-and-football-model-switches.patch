@@ -1,0 +1,210 @@
+diff --git a/src/browser-game.js b/src/browser-game.js
+index bb27508..5263c46 100644
+--- a/src/browser-game.js
++++ b/src/browser-game.js
+@@ -30,7 +30,8 @@ export class BrowserGame {
+         if (data.type === "state") this.onState(data);
+         if (data.type === "error") fail(new Error(data.message));
+       };
+-      worker.postMessage({ type: "init", name });
++      const params = new URLSearchParams(location.search);
++      worker.postMessage({ type: "init", name, walk: params.get("walk"), football: params.get("football") });
+     });
+   }
+   send(message) {
+diff --git a/src/main.js b/src/main.js
+index d956b6f..c458c8b 100644
+--- a/src/main.js
++++ b/src/main.js
+@@ -1,4 +1,6 @@
+ import { batchStaticMeshes } from "./static-batch.js";
++import { resolveWalkPolicy } from "./physics/walk-policy.js";
++import { resolveFootballPolicy } from "./physics/football-choice.js";
+ import { setText, setAttribute, setProperty } from "./dom-updates.js";
+ import { t, runtimeMessage, chooseLanguage, setLanguage, getLanguage, bindStaticTranslations } from "./i18n.js";
+ import { setRigTeam, disposeTeamSkin } from "./team-skin.js";
+@@ -30,6 +32,22 @@ const $$ = (selector) => {
+   return elementLists.get(selector);
+ };
+ const params = new URLSearchParams(location.search);
++// Walking-model badge (?walk=official|genesis|genesis-repro|genesis-rough|genesis-backlash).
++{
++  const badge = document.createElement("div");
++  try {
++    badge.textContent =
++      `行走模型：${resolveWalkPolicy(params.get("walk")).label} · ` +
++      `射门模型：${resolveFootballPolicy(params.get("football")).label}`;
++  } catch (error) {
++    badge.textContent = error.message;
++  }
++  badge.style.cssText =
++    "position:fixed;top:6px;left:50%;transform:translateX(-50%);z-index:9999;" +
++    "padding:2px 10px;border-radius:10px;background:rgba(0,0,0,.55);color:#fff;" +
++    "font:12px/1.6 system-ui,sans-serif;pointer-events:none";
++  document.body.appendChild(badge);
++}
+ let sceneKey =
+   params.get("scene") === "little-world" ? "little-world" : "moon-base";
+ let entered = false,
+diff --git a/src/physics/browser-runtime.js b/src/physics/browser-runtime.js
+index ecc087e..f96ac2e 100644
+--- a/src/physics/browser-runtime.js
++++ b/src/physics/browser-runtime.js
+@@ -1,7 +1,7 @@
+ import * as ort from "onnxruntime-web/wasm";
+ import { assetUrl } from "../assets.js";
+ import { createPhysicsRuntime } from "./runtime.js";
+-export async function loadBrowserRuntime(onProgress) {
++export async function loadBrowserRuntime(onProgress, { walk, football } = {}) {
+   onProgress(0.02, "正在唤醒机器鸭…");
+   ort.env.wasm.numThreads = 1;
+   ort.env.wasm.proxy = false;
+@@ -26,6 +26,8 @@ export async function loadBrowserRuntime(onProgress) {
+     mj,
+     ort,
+     onProgress,
++    walk,
++    football,
+     readText: async (path) => (await get(path)).text(),
+     readBinary: async (path) => (await get(path)).arrayBuffer(),
+     createPolicy: async (_path, bytes) => {
+diff --git a/src/physics/football-choice.js b/src/physics/football-choice.js
+new file mode 100644
+index 0000000..ee06280
+--- /dev/null
++++ b/src/physics/football-choice.js
+@@ -0,0 +1,19 @@
++// Selectable ball-aware football policy (URL ?football=<key>). Whitelisted manifests only.
++// Every manifest still goes through runtime.js's contract validation (61D/14D,
++// 50/200 Hz, 4-step actuator delay, 1-step joint-velocity delay, 1.75 A).
++// The Genesis policy was trained on AMD GPUs (microduck-soccer-demo/training).
++export const FOOTBALL_POLICIES = {
++  official: { manifest: "football.json", label: "原作者 (mjlab)" },
++  genesis: { manifest: "genesis/football-v4ft-v3-2998.json", label: "Genesis v4ft-v3" },
++};
++export const DEFAULT_FOOTBALL = "official";
++export function resolveFootballPolicy(key) {
++  const k = key || DEFAULT_FOOTBALL;
++  const policy = FOOTBALL_POLICIES[k];
++  if (!policy)
++    throw new Error(
++      `未知的射门模型 football=${k}，可选：${Object.keys(FOOTBALL_POLICIES).join(", ")}`,
++    );
++  const dir = policy.manifest.includes("/") ? policy.manifest.replace(/[^/]+$/, "") : "";
++  return { key: k, dir, ...policy };
++}
+diff --git a/src/physics/runtime.js b/src/physics/runtime.js
+index 7ded828..df5455d 100644
+--- a/src/physics/runtime.js
++++ b/src/physics/runtime.js
+@@ -1,4 +1,6 @@
+ import { DOMParser } from "@xmldom/xmldom";
++import { resolveWalkPolicy } from "./walk-policy.js";
++import { resolveFootballPolicy } from "./football-choice.js";
+ const elements = (node, tag) => [...node.getElementsByTagName(tag)];
+ function physicsTemplate(xml) {
+   const doc = new DOMParser().parseFromString(xml, "text/xml");
+@@ -12,14 +14,18 @@ async function loadRuntimeAssets({
+   readBinary,
+   createPolicy,
+   onProgress = () => {},
++  walk,
++  football,
+ }) {
++  const walkPolicy = resolveWalkPolicy(walk);
++  const footballChoice = resolveFootballPolicy(football);
+   const [walkXml, rollerXml, danceXml, danceManifest, footballManifest] =
+     await Promise.all([
+       readText("robot/robot_allcollisions.xml"),
+       readText("robot/robot_allcollisions_rollers.xml"),
+       readText("robot/robot_dance.xml"),
+       readText("policies/duckemw_dance.json"),
+-      readText("policies/football.json"),
++      readText(`policies/${footballChoice.manifest}`),
+     ]);
+   const danceInfo = JSON.parse(danceManifest);
+   const footballInfo = JSON.parse(footballManifest);
+@@ -60,14 +66,14 @@ async function loadRuntimeAssets({
+     ),
+   );
+   const files = {
+-    walk: "BEST_alpha_walking.onnx",
++    walk: walkPolicy.file,
+     stand: "BEST_alpha_stand.onnx",
+     roller: "BEST_roller.onnx",
+     kickL: "ball_kick_left.onnx",
+     kickR: "ball_kick_right.onnx",
+     dance: "duckemw_dance.onnx",
+   };
+-  if (footballInfo.enabled) files.football = footballInfo.file;
++  if (footballInfo.enabled) files.football = footballChoice.dir + footballInfo.file;
+   const plans = Object.entries(files).map(([key, file]) => {
+     const revision = key === "dance" ? danceInfo.sha256
+       : key === "football" ? footballInfo.sha256 : null;
+@@ -88,8 +94,8 @@ async function loadRuntimeAssets({
+     onProgress(0.5 + ((index + 1) / plans.length) * 0.45,
+       "正在准备行走、射门与舞步…");
+   }
+-  return { templates, used, meshes, policies, danceInfo,
+-    footballInfo: footballInfo.enabled ? footballInfo : null };
++  return { templates, used, meshes, policies, danceInfo, walkPolicy,
++    footballInfo: footballInfo.enabled ? footballInfo : null, footballChoice };
+ }
+ 
+ export async function createPhysicsRuntime(options) {
+diff --git a/src/physics/walk-policy.js b/src/physics/walk-policy.js
+new file mode 100644
+index 0000000..9938401
+--- /dev/null
++++ b/src/physics/walk-policy.js
+@@ -0,0 +1,21 @@
++// Selectable walking policy (URL ?walk=<key>). Whitelisted: no arbitrary paths.
++// All variants keep the 61D obs / 14D action / 50 Hz walking contract.
++// Genesis variants were trained on AMD GPUs with microduck-rl-genesis
++// (see experiments/s1_sim2sim for their MuJoCo sim2sim check).
++export const WALK_POLICIES = {
++  official: { file: "BEST_alpha_walking.onnx", label: "官方 Pollen (mjlab)" },
++  genesis: { file: "genesis/velocity.onnx", label: "Genesis velocity" },
++  "genesis-repro": { file: "genesis/velocity-reproduced.onnx", label: "Genesis velocity (复现)" },
++  "genesis-rough": { file: "genesis/rough.onnx", label: "Genesis rough" },
++  "genesis-backlash": { file: "genesis/backlash.onnx", label: "Genesis backlash" },
++};
++export const DEFAULT_WALK = "official";
++export function resolveWalkPolicy(key) {
++  const k = key || DEFAULT_WALK;
++  const policy = WALK_POLICIES[k];
++  if (!policy)
++    throw new Error(
++      `未知的行走模型 walk=${k}，可选：${Object.keys(WALK_POLICIES).join(", ")}`,
++    );
++  return { key: k, ...policy };
++}
+diff --git a/src/physics/worker.js b/src/physics/worker.js
+index 0471cb3..0cf5c09 100644
+--- a/src/physics/worker.js
++++ b/src/physics/worker.js
+@@ -39,11 +39,12 @@ async function pump() {
+       timer = setTimeout(pump, Math.max(0, 20 - (performance.now() - start)));
+   }
+ }
+-async function initialize(name) {
++async function initialize(name, walk, football) {
+   if (initializing || room) return;
+   initializing = true;
+-  const runtime = await loadBrowserRuntime((value, message) =>
+-    postMessage({ type: "progress", value, message }),
++  const runtime = await loadBrowserRuntime(
++    (value, message) => postMessage({ type: "progress", value, message }),
++    { walk, football },
+   );
+   room = createRoom();
+   player = addPlayer(room, "you", String(name || "小鸭队长").slice(0, 24));
+@@ -62,7 +63,7 @@ async function initialize(name) {
+ }
+ self.onmessage = ({ data }) => {
+   if (data.type === "init") {
+-    initialize(data.name).catch(fail);
++    initialize(data.name, data.walk, data.football).catch(fail);
+     return;
+   }
+   if (!room) return;

@@ -1,0 +1,1556 @@
+{
+ "mujoco(game)": {
+  "A_game_kick|left|-0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 3.7600972715008094,
+   "robot_drift_m": 0.012485994227478963,
+   "hit": true,
+   "t_first_move": 0.12,
+   "peak_speed": 0.43015740635518573,
+   "dir_deg": -14.676427739769172,
+   "dist_end_m": 0.5793800008836139
+  },
+  "A_game_kick|left|-0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 3.6158593178503056,
+   "robot_drift_m": 0.009669340032641381,
+   "hit": true,
+   "t_first_move": 0.12,
+   "peak_speed": 0.6417387244851258,
+   "dir_deg": 3.351616668264904,
+   "dist_end_m": 0.9008785213915355
+  },
+  "A_game_kick|left|-0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 3.517988020080011,
+   "robot_drift_m": 0.009318583363286337,
+   "hit": true,
+   "t_first_move": 0.12,
+   "peak_speed": 0.686453274606866,
+   "dir_deg": 18.872657966999412,
+   "dist_end_m": 0.9326057410039963
+  },
+  "A_game_kick|left|+0.000|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 4.034824624278887,
+   "robot_drift_m": 0.013478640338165397,
+   "hit": false
+  },
+  "A_game_kick|left|+0.000|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 3.8191955785180065,
+   "robot_drift_m": 0.011877592941794513,
+   "hit": true,
+   "t_first_move": 0.14,
+   "peak_speed": 0.24749872276834523,
+   "dir_deg": 1.4438421240582995,
+   "dist_end_m": 0.31503838237109866
+  },
+  "A_game_kick|left|+0.000|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 3.7741843375030277,
+   "robot_drift_m": 0.011714606625127329,
+   "hit": true,
+   "t_first_move": 0.14,
+   "peak_speed": 0.30340344350683535,
+   "dir_deg": 14.266142258367621,
+   "dist_end_m": 0.3949203449292538
+  },
+  "A_game_kick|left|+0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 4.034824624278887,
+   "robot_drift_m": 0.013478640338165397,
+   "hit": false
+  },
+  "A_game_kick|left|+0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 4.034824624278887,
+   "robot_drift_m": 0.013478640338165397,
+   "hit": false
+  },
+  "A_game_kick|left|+0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 4.034824624278887,
+   "robot_drift_m": 0.013478640338165397,
+   "hit": false
+  },
+  "A_game_kick|right|-0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 6.866570843328344,
+   "robot_drift_m": 0.033457656682558845,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 0.786418066845265,
+   "dir_deg": -22.589834317859545,
+   "dist_end_m": 1.1294249924956112
+  },
+  "A_game_kick|right|-0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 6.93310369611615,
+   "robot_drift_m": 0.0343082670359633,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 0.7698855370628788,
+   "dir_deg": -9.164856615515857,
+   "dist_end_m": 1.099664809062853
+  },
+  "A_game_kick|right|-0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 6.98705875009224,
+   "robot_drift_m": 0.034287996679837444,
+   "hit": true,
+   "t_first_move": 0.12,
+   "peak_speed": 0.6224012051235547,
+   "dir_deg": 6.707119025677588,
+   "dist_end_m": 0.8841906050429322
+  },
+  "A_game_kick|right|+0.000|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 6.856194739161499,
+   "robot_drift_m": 0.03235605534734509,
+   "hit": true,
+   "t_first_move": 0.14,
+   "peak_speed": 0.3809973997331431,
+   "dir_deg": -18.471607007620584,
+   "dist_end_m": 0.5038927374816735
+  },
+  "A_game_kick|right|+0.000|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 6.874696765567047,
+   "robot_drift_m": 0.03246026109350099,
+   "hit": true,
+   "t_first_move": 0.14,
+   "peak_speed": 0.32054968169690895,
+   "dir_deg": -4.241876561927537,
+   "dist_end_m": 0.43209189688720706
+  },
+  "A_game_kick|right|+0.000|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 6.892924946036081,
+   "robot_drift_m": 0.032345478888284124,
+   "hit": true,
+   "t_first_move": 0.14,
+   "peak_speed": 0.21952177615468127,
+   "dir_deg": 7.282820583613445,
+   "dist_end_m": 0.2690867062133645
+  },
+  "A_game_kick|right|+0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 6.914096581850061,
+   "robot_drift_m": 0.03437335333719829,
+   "hit": false
+  },
+  "A_game_kick|right|+0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 6.914096581850061,
+   "robot_drift_m": 0.03437335333719829,
+   "hit": false
+  },
+  "A_game_kick|right|+0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 6.914096581850061,
+   "robot_drift_m": 0.03437335333719829,
+   "hit": false
+  },
+  "B_full_kick|left|-0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 3.7600972715008094,
+   "robot_drift_m": 0.010145966628730336,
+   "hit": true,
+   "t_first_move": 0.12,
+   "peak_speed": 0.43015740635518573,
+   "dir_deg": -14.676427739769172,
+   "dist_end_m": 0.5793800008836139
+  },
+  "B_full_kick|left|-0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 3.6158593178503056,
+   "robot_drift_m": 0.007436066607317389,
+   "hit": true,
+   "t_first_move": 0.12,
+   "peak_speed": 0.6417387244851258,
+   "dir_deg": 3.351616668264904,
+   "dist_end_m": 0.9008785213915355
+  },
+  "B_full_kick|left|-0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 3.517988020080011,
+   "robot_drift_m": 0.007134403122931093,
+   "hit": true,
+   "t_first_move": 0.12,
+   "peak_speed": 0.686453274606866,
+   "dir_deg": 18.872657966999412,
+   "dist_end_m": 0.9326057410039963
+  },
+  "B_full_kick|left|+0.000|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 4.034824624278887,
+   "robot_drift_m": 0.01136406786875716,
+   "hit": false
+  },
+  "B_full_kick|left|+0.000|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 3.8191955785180065,
+   "robot_drift_m": 0.00986044857229305,
+   "hit": true,
+   "t_first_move": 0.14,
+   "peak_speed": 0.24749872276834523,
+   "dir_deg": 1.4438421240582995,
+   "dist_end_m": 0.31503838237109866
+  },
+  "B_full_kick|left|+0.000|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 3.7741843375030277,
+   "robot_drift_m": 0.009760704956446053,
+   "hit": true,
+   "t_first_move": 0.14,
+   "peak_speed": 0.30340344350683535,
+   "dir_deg": 14.266142258367621,
+   "dist_end_m": 0.3949203449292538
+  },
+  "B_full_kick|left|+0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 4.034824624278887,
+   "robot_drift_m": 0.01136406786875716,
+   "hit": false
+  },
+  "B_full_kick|left|+0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 4.034824624278887,
+   "robot_drift_m": 0.01136406786875716,
+   "hit": false
+  },
+  "B_full_kick|left|+0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 4.034824624278887,
+   "robot_drift_m": 0.01136406786875716,
+   "hit": false
+  },
+  "B_full_kick|right|-0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 6.866570843328344,
+   "robot_drift_m": 0.03024200480097002,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 0.786418066845265,
+   "dir_deg": -22.589834317859545,
+   "dist_end_m": 1.1294249924956112
+  },
+  "B_full_kick|right|-0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 6.93310369611615,
+   "robot_drift_m": 0.03129025781344576,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 0.7698855370628788,
+   "dir_deg": -9.164856615515857,
+   "dist_end_m": 1.099664809062853
+  },
+  "B_full_kick|right|-0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 6.98705875009224,
+   "robot_drift_m": 0.03123558081946986,
+   "hit": true,
+   "t_first_move": 0.12,
+   "peak_speed": 0.6224012051235547,
+   "dir_deg": 6.707119025677588,
+   "dist_end_m": 0.8841906050429322
+  },
+  "B_full_kick|right|+0.000|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 6.856194739161499,
+   "robot_drift_m": 0.02930349740276767,
+   "hit": true,
+   "t_first_move": 0.14,
+   "peak_speed": 0.3809973997331431,
+   "dir_deg": -18.471607007620584,
+   "dist_end_m": 0.5038927374816735
+  },
+  "B_full_kick|right|+0.000|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 6.874696765567047,
+   "robot_drift_m": 0.029383685916796756,
+   "hit": true,
+   "t_first_move": 0.14,
+   "peak_speed": 0.32054968169690895,
+   "dir_deg": -4.241876561927537,
+   "dist_end_m": 0.43209189688720706
+  },
+  "B_full_kick|right|+0.000|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 6.892924946036081,
+   "robot_drift_m": 0.029418898684935482,
+   "hit": true,
+   "t_first_move": 0.14,
+   "peak_speed": 0.21952177615468127,
+   "dir_deg": 7.282820583613445,
+   "dist_end_m": 0.2690867062133645
+  },
+  "B_full_kick|right|+0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 6.914096581850061,
+   "robot_drift_m": 0.03127178762246631,
+   "hit": false
+  },
+  "B_full_kick|right|+0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 6.914096581850061,
+   "robot_drift_m": 0.03127178762246631,
+   "hit": false
+  },
+  "B_full_kick|right|+0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 6.914096581850061,
+   "robot_drift_m": 0.03127178762246631,
+   "hit": false
+  },
+  "C_football|left|-0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 11.93695358927632,
+   "robot_drift_m": 0.09747714009560302,
+   "hit": true,
+   "t_first_move": 0.3,
+   "peak_speed": 1.4963111500272832,
+   "dir_deg": -9.994455130770033,
+   "dist_end_m": 3.116172238894568
+  },
+  "C_football|left|-0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 11.878872995369097,
+   "robot_drift_m": 0.11059960544821136,
+   "hit": true,
+   "t_first_move": 0.3,
+   "peak_speed": 1.4985079670744412,
+   "dir_deg": -4.788245180191323,
+   "dist_end_m": 3.07884976392586
+  },
+  "C_football|left|-0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 12.590926910312572,
+   "robot_drift_m": 0.11888036128279374,
+   "hit": true,
+   "t_first_move": 0.3,
+   "peak_speed": 1.5177137184804146,
+   "dir_deg": 2.1548115799509935,
+   "dist_end_m": 3.0896338939543724
+  },
+  "C_football|left|+0.000|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 11.363379484789744,
+   "robot_drift_m": 0.09771532219603793,
+   "hit": true,
+   "t_first_move": 0.3,
+   "peak_speed": 1.666720985075114,
+   "dir_deg": -10.823715859222514,
+   "dist_end_m": 3.6459593359385267
+  },
+  "C_football|left|+0.000|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 11.707616849241978,
+   "robot_drift_m": 0.1142561011007285,
+   "hit": true,
+   "t_first_move": 0.3,
+   "peak_speed": 1.7020327278159193,
+   "dir_deg": -5.987847115170543,
+   "dist_end_m": 3.6529996182850377
+  },
+  "C_football|left|+0.000|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 12.41461752441609,
+   "robot_drift_m": 0.12340987302568661,
+   "hit": true,
+   "t_first_move": 0.3,
+   "peak_speed": 1.7369150897427765,
+   "dir_deg": -2.1851837668653014,
+   "dist_end_m": 3.6740660113102557
+  },
+  "C_football|left|+0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 11.335005804439566,
+   "robot_drift_m": 0.10304056476156673,
+   "hit": true,
+   "t_first_move": 0.32,
+   "peak_speed": 1.8189906785009475,
+   "dir_deg": -9.987931198499298,
+   "dist_end_m": 3.9764896547666035
+  },
+  "C_football|left|+0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 12.355215045420087,
+   "robot_drift_m": 0.11623641229860569,
+   "hit": true,
+   "t_first_move": 0.32,
+   "peak_speed": 1.8264445282650932,
+   "dir_deg": -7.087865725081313,
+   "dist_end_m": 3.947558000815158
+  },
+  "C_football|left|+0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 12.618207976017455,
+   "robot_drift_m": 0.13486520713467465,
+   "hit": true,
+   "t_first_move": 0.32,
+   "peak_speed": 1.8752197797032581,
+   "dir_deg": -1.854680341505308,
+   "dist_end_m": 4.059182684175324
+  },
+  "C_football|right|-0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 15.123261703687302,
+   "robot_drift_m": 0.09228477586821862,
+   "hit": true,
+   "t_first_move": 0.32,
+   "peak_speed": 1.6609128708241145,
+   "dir_deg": -41.71804527550233,
+   "dist_end_m": 4.101177759100308
+  },
+  "C_football|right|-0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 14.289988290710204,
+   "robot_drift_m": 0.09812613372553836,
+   "hit": true,
+   "t_first_move": 0.32,
+   "peak_speed": 1.6870614061527869,
+   "dir_deg": -34.55003132467077,
+   "dist_end_m": 4.066661839078241
+  },
+  "C_football|right|-0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 11.712778524175429,
+   "robot_drift_m": 0.07806745590427616,
+   "hit": true,
+   "t_first_move": 0.3,
+   "peak_speed": 1.7063782445873796,
+   "dir_deg": -25.300603471200425,
+   "dist_end_m": 4.034664509250786
+  },
+  "C_football|right|+0.000|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 11.668080157666836,
+   "robot_drift_m": 0.09477781086869227,
+   "hit": true,
+   "t_first_move": 0.34,
+   "peak_speed": 1.7559899143335462,
+   "dir_deg": -36.94496865042821,
+   "dist_end_m": 4.275157123439439
+  },
+  "C_football|right|+0.000|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 11.191245746801497,
+   "robot_drift_m": 0.08728838488631957,
+   "hit": true,
+   "t_first_move": 0.34,
+   "peak_speed": 1.7335096344420526,
+   "dir_deg": -33.337066140752285,
+   "dist_end_m": 4.289346671598095
+  },
+  "C_football|right|+0.000|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 11.663407035936942,
+   "robot_drift_m": 0.07900699775534112,
+   "hit": true,
+   "t_first_move": 0.3,
+   "peak_speed": 1.838178651838817,
+   "dir_deg": -21.991897341871976,
+   "dist_end_m": 4.330932647710547
+  },
+  "C_football|right|+0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 11.86926682731365,
+   "robot_drift_m": 0.0948221657672308,
+   "hit": true,
+   "t_first_move": 0.34,
+   "peak_speed": 1.8616056558279086,
+   "dir_deg": -31.522209260003123,
+   "dist_end_m": 4.451545029119172
+  },
+  "C_football|right|+0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 10.916087770400939,
+   "robot_drift_m": 0.08485542965778728,
+   "hit": true,
+   "t_first_move": 0.32,
+   "peak_speed": 1.8327926848372031,
+   "dir_deg": -21.40748304477855,
+   "dist_end_m": 4.400778146171853
+  },
+  "C_football|right|+0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 11.572804495276515,
+   "robot_drift_m": 0.0834523206494514,
+   "hit": true,
+   "t_first_move": 0.32,
+   "peak_speed": 1.8797669685983518,
+   "dir_deg": -20.078180436793293,
+   "dist_end_m": 4.433038251382146
+  }
+ },
+ "genesis_native": {
+  "A_game_kick|left|-0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 3.965361994758914,
+   "robot_drift_m": 0.024253244294914888,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 0.8343765837344082,
+   "dir_deg": -11.412703069464369,
+   "dist_end_m": 2.8702228229805202
+  },
+  "A_game_kick|left|-0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 3.8538166154891624,
+   "robot_drift_m": 0.026781818416858366,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 1.016156077745256,
+   "dir_deg": 7.92371092740976,
+   "dist_end_m": 3.289421341901294
+  },
+  "A_game_kick|left|-0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 3.8570164123304163,
+   "robot_drift_m": 0.027643701294486827,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 1.0246507419887807,
+   "dir_deg": 21.52757797736172,
+   "dist_end_m": 3.354601502825301
+  },
+  "A_game_kick|left|+0.000|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 4.154070802761532,
+   "robot_drift_m": 0.026410357742856237,
+   "hit": true,
+   "t_first_move": 0.12,
+   "peak_speed": 0.6204680675055867,
+   "dir_deg": -11.405129336127953,
+   "dist_end_m": 2.2591797750118423
+  },
+  "A_game_kick|left|+0.000|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 4.086673959241867,
+   "robot_drift_m": 0.026642483118398473,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 0.7778730561702497,
+   "dir_deg": 3.6847476037687756,
+   "dist_end_m": 2.675110393779798
+  },
+  "A_game_kick|left|+0.000|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 4.127016139786553,
+   "robot_drift_m": 0.026599498851323986,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 0.7892624952938574,
+   "dir_deg": 18.181888825043682,
+   "dist_end_m": 2.693437418207077
+  },
+  "A_game_kick|left|+0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 4.516312393434459,
+   "robot_drift_m": 0.02705542442273158,
+   "hit": true,
+   "t_first_move": 0.14,
+   "peak_speed": 0.21443914487690155,
+   "dir_deg": -10.704829424473841,
+   "dist_end_m": 0.8228654397563746
+  },
+  "A_game_kick|left|+0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 4.356355242747695,
+   "robot_drift_m": 0.0255801750569114,
+   "hit": true,
+   "t_first_move": 0.14,
+   "peak_speed": 0.37082805320168244,
+   "dir_deg": 1.1241208908140283,
+   "dist_end_m": 1.4329504768782544
+  },
+  "A_game_kick|left|+0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 4.333726962433846,
+   "robot_drift_m": 0.025612375515012328,
+   "hit": true,
+   "t_first_move": 0.12,
+   "peak_speed": 0.4009711498568728,
+   "dir_deg": 13.154756709266255,
+   "dist_end_m": 1.5326919723329522
+  },
+  "A_game_kick|right|-0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 5.974549254453513,
+   "robot_drift_m": 0.03432054773836415,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 0.9202056960540285,
+   "dir_deg": -17.556142047372838,
+   "dist_end_m": 3.1301549251640686
+  },
+  "A_game_kick|right|-0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 6.0740246575630685,
+   "robot_drift_m": 0.03376208443162105,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 1.0044353024551322,
+   "dir_deg": -16.472015035443487,
+   "dist_end_m": 3.327036710931454
+  },
+  "A_game_kick|right|-0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 6.2134391211578865,
+   "robot_drift_m": 0.034179043235056744,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 0.8440732089818828,
+   "dir_deg": 1.383883631308682,
+   "dist_end_m": 2.90912581159456
+  },
+  "A_game_kick|right|+0.000|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 6.092071795281287,
+   "robot_drift_m": 0.032727604761689136,
+   "hit": true,
+   "t_first_move": 0.12,
+   "peak_speed": 0.6656671790812394,
+   "dir_deg": -19.094665810669575,
+   "dist_end_m": 2.389989782661889
+  },
+  "A_game_kick|right|+0.000|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 6.1522091621568675,
+   "robot_drift_m": 0.03348944112677572,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 0.6932037807262137,
+   "dir_deg": -9.834598064523187,
+   "dist_end_m": 2.4780920879901402
+  },
+  "A_game_kick|right|+0.000|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 6.195649241085369,
+   "robot_drift_m": 0.033444643063657374,
+   "hit": true,
+   "t_first_move": 0.12,
+   "peak_speed": 0.5559310807263015,
+   "dir_deg": 3.0757350877091088,
+   "dist_end_m": 2.118875256466757
+  },
+  "A_game_kick|right|+0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 6.126599438033659,
+   "robot_drift_m": 0.03159026259544477,
+   "hit": true,
+   "t_first_move": 0.16,
+   "peak_speed": 0.14469110544657787,
+   "dir_deg": -21.514967975729082,
+   "dist_end_m": 0.5619911170159654
+  },
+  "A_game_kick|right|+0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 6.137916603611813,
+   "robot_drift_m": 0.03177299900046233,
+   "hit": true,
+   "t_first_move": 0.16,
+   "peak_speed": 0.11806972325751476,
+   "dir_deg": -6.476237823716664,
+   "dist_end_m": 0.4586361040896933
+  },
+  "A_game_kick|right|+0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 6.148894196352997,
+   "robot_drift_m": 0.03160875510823536,
+   "hit": false
+  },
+  "B_full_kick|left|-0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 3.965361994758914,
+   "robot_drift_m": 0.023341783808355054,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 0.8343765837344082,
+   "dir_deg": -11.412703069464369,
+   "dist_end_m": 2.8702228229805202
+  },
+  "B_full_kick|left|-0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 3.8538166154891624,
+   "robot_drift_m": 0.02560403850791327,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 1.016156077745256,
+   "dir_deg": 7.92371092740976,
+   "dist_end_m": 3.289421341901294
+  },
+  "B_full_kick|left|-0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 3.8570164123304163,
+   "robot_drift_m": 0.02645328310193886,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 1.0246507419887807,
+   "dir_deg": 21.52757797736172,
+   "dist_end_m": 3.354601502825301
+  },
+  "B_full_kick|left|+0.000|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 4.154070802761532,
+   "robot_drift_m": 0.025572457923373912,
+   "hit": true,
+   "t_first_move": 0.12,
+   "peak_speed": 0.6204680675055867,
+   "dir_deg": -11.405129336127953,
+   "dist_end_m": 2.2591797750118423
+  },
+  "B_full_kick|left|+0.000|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 4.086673959241867,
+   "robot_drift_m": 0.025781723000997427,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 0.7778730561702497,
+   "dir_deg": 3.6847476037687756,
+   "dist_end_m": 2.675110392169289
+  },
+  "B_full_kick|left|+0.000|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 4.127016139786553,
+   "robot_drift_m": 0.025773988109008605,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 0.7892624952938574,
+   "dir_deg": 18.181888825043682,
+   "dist_end_m": 2.693437418207077
+  },
+  "B_full_kick|left|+0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 4.516312393434459,
+   "robot_drift_m": 0.026574554237950333,
+   "hit": true,
+   "t_first_move": 0.14,
+   "peak_speed": 0.21443914487690155,
+   "dir_deg": -10.704828721363752,
+   "dist_end_m": 0.8228654369391706
+  },
+  "B_full_kick|left|+0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 4.356355242747695,
+   "robot_drift_m": 0.025076327089533706,
+   "hit": true,
+   "t_first_move": 0.14,
+   "peak_speed": 0.37082805320168244,
+   "dir_deg": 1.1241208908140283,
+   "dist_end_m": 1.4329504768782544
+  },
+  "B_full_kick|left|+0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 4.333726962433846,
+   "robot_drift_m": 0.025238661037353928,
+   "hit": true,
+   "t_first_move": 0.12,
+   "peak_speed": 0.4009711498568728,
+   "dir_deg": 13.154756709266255,
+   "dist_end_m": 1.5326919723329522
+  },
+  "B_full_kick|right|-0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 5.974549254453513,
+   "robot_drift_m": 0.031657267077044644,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 0.9202056960540285,
+   "dir_deg": -17.556142047372838,
+   "dist_end_m": 3.1301549251640686
+  },
+  "B_full_kick|right|-0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 6.0740246575630685,
+   "robot_drift_m": 0.03049222986860958,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 1.0044353024551322,
+   "dir_deg": -16.472015035443487,
+   "dist_end_m": 3.327036710931454
+  },
+  "B_full_kick|right|-0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 6.2134391211578865,
+   "robot_drift_m": 0.031197260192705085,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 0.8440732089818828,
+   "dir_deg": 1.383883631308682,
+   "dist_end_m": 2.9091258052770055
+  },
+  "B_full_kick|right|+0.000|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 6.092071795281287,
+   "robot_drift_m": 0.029423783193013787,
+   "hit": true,
+   "t_first_move": 0.12,
+   "peak_speed": 0.6656671790812394,
+   "dir_deg": -19.094665810669575,
+   "dist_end_m": 2.389989782661889
+  },
+  "B_full_kick|right|+0.000|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 6.1522091621568675,
+   "robot_drift_m": 0.03060655280073562,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 0.6932037807262137,
+   "dir_deg": -9.834598064523187,
+   "dist_end_m": 2.478092050078649
+  },
+  "B_full_kick|right|+0.000|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 6.195649241085369,
+   "robot_drift_m": 0.03046913740226764,
+   "hit": true,
+   "t_first_move": 0.12,
+   "peak_speed": 0.5559310807263015,
+   "dir_deg": 3.0757350877091088,
+   "dist_end_m": 2.1188752523641687
+  },
+  "B_full_kick|right|+0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 6.126599438033659,
+   "robot_drift_m": 0.02776121300082992,
+   "hit": true,
+   "t_first_move": 0.16,
+   "peak_speed": 0.14469110544657787,
+   "dir_deg": -21.514967975729082,
+   "dist_end_m": 0.5619911170159654
+  },
+  "B_full_kick|right|+0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 6.137916603611813,
+   "robot_drift_m": 0.02787190251089361,
+   "hit": true,
+   "t_first_move": 0.16,
+   "peak_speed": 0.11806972325751476,
+   "dir_deg": -6.476237823716664,
+   "dist_end_m": 0.4586361040896933
+  },
+  "B_full_kick|right|+0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 6.148894196352997,
+   "robot_drift_m": 0.02760583587220014,
+   "hit": false
+  },
+  "C_football|left|-0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 18.711515690347877,
+   "robot_drift_m": 0.19244148296509567,
+   "hit": true,
+   "t_first_move": 0.06,
+   "peak_speed": 1.7259687229785383,
+   "dir_deg": -5.958149608049737,
+   "dist_end_m": 6.338236388019102
+  },
+  "C_football|left|-0.015|+0.000": {
+   "falls": 1,
+   "tilt_max_deg": 169.4112068628021,
+   "robot_drift_m": 0.47632335595359143,
+   "hit": true,
+   "t_first_move": 0.06,
+   "peak_speed": 0.6115098286520607,
+   "dir_deg": 11.732393020329377,
+   "dist_end_m": 1.8528782845491918
+  },
+  "C_football|left|-0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 27.82226736185629,
+   "robot_drift_m": 0.2663934810048805,
+   "hit": true,
+   "t_first_move": 0.06,
+   "peak_speed": 1.2248937361444625,
+   "dir_deg": 11.986690635734204,
+   "dist_end_m": 4.358138089412689
+  },
+  "C_football|left|+0.000|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 11.738311634149177,
+   "robot_drift_m": 0.09251156140044973,
+   "hit": true,
+   "t_first_move": 0.3,
+   "peak_speed": 1.3612937394792644,
+   "dir_deg": -14.737815510717267,
+   "dist_end_m": 4.887471701027553
+  },
+  "C_football|left|+0.000|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 12.060437504860868,
+   "robot_drift_m": 0.14180667643122508,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 1.6286315301639713,
+   "dir_deg": -2.719375408703682,
+   "dist_end_m": 5.9193699035718526
+  },
+  "C_football|left|+0.000|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 11.456829382313227,
+   "robot_drift_m": 0.1064374791731777,
+   "hit": true,
+   "t_first_move": 0.12,
+   "peak_speed": 1.445788641692737,
+   "dir_deg": -0.10503841332501704,
+   "dist_end_m": 5.314102433178258
+  },
+  "C_football|left|+0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 11.933616559341504,
+   "robot_drift_m": 0.08640781784112975,
+   "hit": true,
+   "t_first_move": 0.32,
+   "peak_speed": 1.4051867434384677,
+   "dir_deg": -15.435628623751716,
+   "dist_end_m": 5.156975926203624
+  },
+  "C_football|left|+0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 12.21209146035185,
+   "robot_drift_m": 0.10053469469404322,
+   "hit": true,
+   "t_first_move": 0.32,
+   "peak_speed": 1.4468893026880405,
+   "dir_deg": -12.889759127174605,
+   "dist_end_m": 5.3117422571134165
+  },
+  "C_football|left|+0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 12.2197577985171,
+   "robot_drift_m": 0.10464996130440013,
+   "hit": true,
+   "t_first_move": 0.32,
+   "peak_speed": 1.473724456558335,
+   "dir_deg": -8.143099958565328,
+   "dist_end_m": 5.384087661392589
+  },
+  "C_football|right|-0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 11.54295784600906,
+   "robot_drift_m": 0.07970083618076702,
+   "hit": true,
+   "t_first_move": 0.32,
+   "peak_speed": 1.480877856310151,
+   "dir_deg": -38.55981704338992,
+   "dist_end_m": 5.438987597292414
+  },
+  "C_football|right|-0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 11.335237914266944,
+   "robot_drift_m": 0.10396868935784796,
+   "hit": true,
+   "t_first_move": 0.24,
+   "peak_speed": 1.5399552836965498,
+   "dir_deg": -30.031334066895873,
+   "dist_end_m": 5.567070007507004
+  },
+  "C_football|right|-0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 10.763604922094988,
+   "robot_drift_m": 0.07615586007059805,
+   "hit": true,
+   "t_first_move": 0.32,
+   "peak_speed": 1.352833531239971,
+   "dir_deg": -28.207845573248356,
+   "dist_end_m": 4.987152694529243
+  },
+  "C_football|right|+0.000|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 11.456176019028,
+   "robot_drift_m": 0.08266631536609736,
+   "hit": true,
+   "t_first_move": 0.34,
+   "peak_speed": 1.6015146452574343,
+   "dir_deg": -36.22577529925891,
+   "dist_end_m": 5.778235523731402
+  },
+  "C_football|right|+0.000|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 11.043394800973763,
+   "robot_drift_m": 0.10877499578193377,
+   "hit": true,
+   "t_first_move": 0.32,
+   "peak_speed": 1.5974799750297068,
+   "dir_deg": -28.51854326251213,
+   "dist_end_m": 5.726635217953633
+  },
+  "C_football|right|+0.000|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 12.312508260712441,
+   "robot_drift_m": 0.09049990216198177,
+   "hit": true,
+   "t_first_move": 0.32,
+   "peak_speed": 1.5478228607281002,
+   "dir_deg": -25.753476972188142,
+   "dist_end_m": 5.671482713989634
+  },
+  "C_football|right|+0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 11.316857551098998,
+   "robot_drift_m": 0.1018171813763503,
+   "hit": true,
+   "t_first_move": 0.34,
+   "peak_speed": 1.7244017923259274,
+   "dir_deg": -33.511347751206955,
+   "dist_end_m": 5.99131791347107
+  },
+  "C_football|right|+0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 11.092085440214595,
+   "robot_drift_m": 0.10080387664074766,
+   "hit": true,
+   "t_first_move": 0.34,
+   "peak_speed": 1.6623963394841372,
+   "dir_deg": -28.178188974432615,
+   "dist_end_m": 5.986141942720448
+  },
+  "C_football|right|+0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 12.149534591182256,
+   "robot_drift_m": 0.1578657884357045,
+   "hit": true,
+   "t_first_move": 0.34,
+   "peak_speed": 1.6455227208342775,
+   "dir_deg": -20.75223902808991,
+   "dist_end_m": 6.010636473004179
+  }
+ },
+ "genesis_rollfric": {
+  "A_game_kick|left|-0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 3.9638801880317986,
+   "robot_drift_m": 0.024281356109796204,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 0.8361143568815493,
+   "dir_deg": -10.924845300184007,
+   "dist_end_m": 1.3022303917882911
+  },
+  "A_game_kick|left|-0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 3.850766721690789,
+   "robot_drift_m": 0.026799816647929225,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 1.0185416621488939,
+   "dir_deg": 8.441792270935421,
+   "dist_end_m": 1.5183300825617498
+  },
+  "A_game_kick|left|-0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 3.8569148722160898,
+   "robot_drift_m": 0.02766503913563175,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 1.024908818599991,
+   "dir_deg": 21.746593366905696,
+   "dist_end_m": 1.5364456540586786
+  },
+  "A_game_kick|left|+0.000|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 4.153222113283503,
+   "robot_drift_m": 0.026419707726459237,
+   "hit": true,
+   "t_first_move": 0.12,
+   "peak_speed": 0.6221143145508183,
+   "dir_deg": -10.816428670683578,
+   "dist_end_m": 0.9980563772042239
+  },
+  "A_game_kick|left|+0.000|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 4.086482271722251,
+   "robot_drift_m": 0.026586386017108454,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 0.779017891758622,
+   "dir_deg": 4.108422644891219,
+   "dist_end_m": 1.1921572738172388
+  },
+  "A_game_kick|left|+0.000|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 4.1279176508516935,
+   "robot_drift_m": 0.02650911666485101,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 0.7895669904412006,
+   "dir_deg": 18.518018212372315,
+   "dist_end_m": 1.2000498307162475
+  },
+  "A_game_kick|left|+0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 4.50767348240169,
+   "robot_drift_m": 0.02708036940383287,
+   "hit": true,
+   "t_first_move": 0.14,
+   "peak_speed": 0.21874338017635048,
+   "dir_deg": -8.649368869493538,
+   "dist_end_m": 0.36114516644346395
+  },
+  "A_game_kick|left|+0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 4.352891994210588,
+   "robot_drift_m": 0.02560091994147802,
+   "hit": true,
+   "t_first_move": 0.14,
+   "peak_speed": 0.37290203430986757,
+   "dir_deg": 2.535943829669002,
+   "dist_end_m": 0.6175713337935778
+  },
+  "A_game_kick|left|+0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 4.3326421778535105,
+   "robot_drift_m": 0.025737807188677873,
+   "hit": true,
+   "t_first_move": 0.12,
+   "peak_speed": 0.402204280107677,
+   "dir_deg": 14.540043860003214,
+   "dist_end_m": 0.6569311559335661
+  },
+  "A_game_kick|right|-0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 5.970052584738705,
+   "robot_drift_m": 0.03431510675995116,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 0.9208379651025144,
+   "dir_deg": -17.94503420725897,
+   "dist_end_m": 1.4142271630527796
+  },
+  "A_game_kick|right|-0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 6.070602576004321,
+   "robot_drift_m": 0.033756343015667996,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 1.0067559073342398,
+   "dir_deg": -16.878197466978403,
+   "dist_end_m": 1.5179476767180318
+  },
+  "A_game_kick|right|-0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 6.20955685619067,
+   "robot_drift_m": 0.034165673299808075,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 0.8471532920243521,
+   "dir_deg": 0.8320702844393248,
+   "dist_end_m": 1.315263174102886
+  },
+  "A_game_kick|right|+0.000|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 6.087049734755789,
+   "robot_drift_m": 0.032619315725528696,
+   "hit": true,
+   "t_first_move": 0.12,
+   "peak_speed": 0.671162692943914,
+   "dir_deg": -19.900129637711707,
+   "dist_end_m": 1.0498846968152555
+  },
+  "A_game_kick|right|+0.000|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 6.148607240610835,
+   "robot_drift_m": 0.0334557575547278,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 0.6973352011017624,
+   "dir_deg": -10.413322303362172,
+   "dist_end_m": 1.1006892663806032
+  },
+  "A_game_kick|right|+0.000|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 6.19299061438697,
+   "robot_drift_m": 0.033354528861216655,
+   "hit": true,
+   "t_first_move": 0.12,
+   "peak_speed": 0.5578734468647363,
+   "dir_deg": 2.4344653655133603,
+   "dist_end_m": 0.9273817142281122
+  },
+  "A_game_kick|right|+0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 6.125127316645483,
+   "robot_drift_m": 0.03157991109032315,
+   "hit": true,
+   "t_first_move": 0.16,
+   "peak_speed": 0.14786479007141698,
+   "dir_deg": -22.717555103610785,
+   "dist_end_m": 0.24732453494421622
+  },
+  "A_game_kick|right|+0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 6.137086106753846,
+   "robot_drift_m": 0.031643166197927425,
+   "hit": true,
+   "t_first_move": 0.16,
+   "peak_speed": 0.12124794267937106,
+   "dir_deg": -7.980074230214508,
+   "dist_end_m": 0.2028642526504344
+  },
+  "A_game_kick|right|+0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 6.148894196352997,
+   "robot_drift_m": 0.03160875596430442,
+   "hit": false
+  },
+  "B_full_kick|left|-0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 3.9638801880317986,
+   "robot_drift_m": 0.02335112747842102,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 0.8361143568815493,
+   "dir_deg": -10.924845300184007,
+   "dist_end_m": 1.3022296804105835
+  },
+  "B_full_kick|left|-0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 3.850766721690789,
+   "robot_drift_m": 0.025609036373847375,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 1.0185416621488939,
+   "dir_deg": 8.441792270935421,
+   "dist_end_m": 1.5183300688460077
+  },
+  "B_full_kick|left|-0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 3.8569148722160898,
+   "robot_drift_m": 0.0264747082993195,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 1.024908818599991,
+   "dir_deg": 21.746593366905696,
+   "dist_end_m": 1.5364427098092368
+  },
+  "B_full_kick|left|+0.000|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 4.153222113283503,
+   "robot_drift_m": 0.025583006014928193,
+   "hit": true,
+   "t_first_move": 0.12,
+   "peak_speed": 0.6221143145508183,
+   "dir_deg": -10.816428670683578,
+   "dist_end_m": 0.9980564969557527
+  },
+  "B_full_kick|left|+0.000|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 4.086482271722251,
+   "robot_drift_m": 0.025779808563506548,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 0.779017891758622,
+   "dir_deg": 4.108422644891219,
+   "dist_end_m": 1.1921551270973914
+  },
+  "B_full_kick|left|+0.000|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 4.1279176508516935,
+   "robot_drift_m": 0.025803321473984533,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 0.7895669904412006,
+   "dir_deg": 18.518018212372315,
+   "dist_end_m": 1.2000476820604886
+  },
+  "B_full_kick|left|+0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 4.50767348240169,
+   "robot_drift_m": 0.026603727987215033,
+   "hit": true,
+   "t_first_move": 0.14,
+   "peak_speed": 0.21874338017635048,
+   "dir_deg": -8.649368346250885,
+   "dist_end_m": 0.36114474672132796
+  },
+  "B_full_kick|left|+0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 4.352891994210588,
+   "robot_drift_m": 0.02510822617099243,
+   "hit": true,
+   "t_first_move": 0.14,
+   "peak_speed": 0.37290203430986757,
+   "dir_deg": 2.5359426022653064,
+   "dist_end_m": 0.6175690071954424
+  },
+  "B_full_kick|left|+0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 4.3326421778535105,
+   "robot_drift_m": 0.025267525758233596,
+   "hit": true,
+   "t_first_move": 0.12,
+   "peak_speed": 0.402204280107677,
+   "dir_deg": 14.540043860003214,
+   "dist_end_m": 0.6569276074370028
+  },
+  "B_full_kick|right|-0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 5.970052584738705,
+   "robot_drift_m": 0.03164846188246738,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 0.9208379651025144,
+   "dir_deg": -17.94503420725897,
+   "dist_end_m": 1.4142245429514555
+  },
+  "B_full_kick|right|-0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 6.070602576004321,
+   "robot_drift_m": 0.030485892176667546,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 1.0067559073342398,
+   "dir_deg": -16.878197466978403,
+   "dist_end_m": 1.5179434438006272
+  },
+  "B_full_kick|right|-0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 6.20955685619067,
+   "robot_drift_m": 0.031171635924896007,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 0.8471532920243521,
+   "dir_deg": 0.8320702844393248,
+   "dist_end_m": 1.3152604285460567
+  },
+  "B_full_kick|right|+0.000|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 6.087049734755789,
+   "robot_drift_m": 0.029358925371336178,
+   "hit": true,
+   "t_first_move": 0.12,
+   "peak_speed": 0.671162692943914,
+   "dir_deg": -19.900129637711707,
+   "dist_end_m": 1.0498862643445224
+  },
+  "B_full_kick|right|+0.000|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 6.148607240610835,
+   "robot_drift_m": 0.03053645478439844,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 0.6973352011017624,
+   "dir_deg": -10.413322303362172,
+   "dist_end_m": 1.100688518517756
+  },
+  "B_full_kick|right|+0.000|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 6.19299061438697,
+   "robot_drift_m": 0.030439784925661264,
+   "hit": true,
+   "t_first_move": 0.12,
+   "peak_speed": 0.5578734468647363,
+   "dir_deg": 2.4344653655133603,
+   "dist_end_m": 0.9273841061968567
+  },
+  "B_full_kick|right|+0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 6.125127316645483,
+   "robot_drift_m": 0.027704553117768656,
+   "hit": true,
+   "t_first_move": 0.16,
+   "peak_speed": 0.14786479007141698,
+   "dir_deg": -22.717555103610785,
+   "dist_end_m": 0.24732409253082224
+  },
+  "B_full_kick|right|+0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 6.137086106753846,
+   "robot_drift_m": 0.027800495156347405,
+   "hit": true,
+   "t_first_move": 0.16,
+   "peak_speed": 0.12124794267937106,
+   "dir_deg": -7.980074230214508,
+   "dist_end_m": 0.20286351950201142
+  },
+  "B_full_kick|right|+0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 6.148894196352997,
+   "robot_drift_m": 0.027605826387501763,
+   "hit": false
+  },
+  "C_football|left|-0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 15.807224373455053,
+   "robot_drift_m": 0.17460189417993757,
+   "hit": true,
+   "t_first_move": 0.06,
+   "peak_speed": 1.8254737218573762,
+   "dir_deg": -5.394409277367464,
+   "dist_end_m": 3.966325479349917
+  },
+  "C_football|left|-0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 35.283222006097276,
+   "robot_drift_m": 0.2951426705689057,
+   "hit": true,
+   "t_first_move": 0.06,
+   "peak_speed": 0.8878052067822264,
+   "dir_deg": 8.214878490755162,
+   "dist_end_m": 1.6365667033893003
+  },
+  "C_football|left|-0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 23.48778359530798,
+   "robot_drift_m": 0.21991079055355234,
+   "hit": true,
+   "t_first_move": 0.06,
+   "peak_speed": 1.4610693869296696,
+   "dir_deg": 11.909715066862145,
+   "dist_end_m": 2.442850328516333
+  },
+  "C_football|left|+0.000|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 11.727311345959533,
+   "robot_drift_m": 0.09286571491506958,
+   "hit": true,
+   "t_first_move": 0.28,
+   "peak_speed": 1.3654710883916032,
+   "dir_deg": -13.131721378556897,
+   "dist_end_m": 2.5041112744422547
+  },
+  "C_football|left|+0.000|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 12.054928136562177,
+   "robot_drift_m": 0.14858589345678158,
+   "hit": true,
+   "t_first_move": 0.1,
+   "peak_speed": 1.6416681339473627,
+   "dir_deg": -1.3584589924671964,
+   "dist_end_m": 3.36573100520739
+  },
+  "C_football|left|+0.000|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 11.453046242916717,
+   "robot_drift_m": 0.10918555937673768,
+   "hit": true,
+   "t_first_move": 0.12,
+   "peak_speed": 1.438671040041636,
+   "dir_deg": 1.2017900497769682,
+   "dist_end_m": 2.7949547974197806
+  },
+  "C_football|left|+0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 11.933616559341504,
+   "robot_drift_m": 0.09047866100664102,
+   "hit": true,
+   "t_first_move": 0.32,
+   "peak_speed": 1.400771391720329,
+   "dir_deg": -14.153915582380753,
+   "dist_end_m": 2.686589891400661
+  },
+  "C_football|left|+0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 12.21209146035185,
+   "robot_drift_m": 0.09561980833455035,
+   "hit": true,
+   "t_first_move": 0.32,
+   "peak_speed": 1.4555079871968366,
+   "dir_deg": -11.004206970471698,
+   "dist_end_m": 2.840445624498535
+  },
+  "C_football|left|+0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 12.238540477773538,
+   "robot_drift_m": 0.10323802443997208,
+   "hit": true,
+   "t_first_move": 0.32,
+   "peak_speed": 1.4790367914209608,
+   "dir_deg": -7.13321701488771,
+   "dist_end_m": 2.879677499010408
+  },
+  "C_football|right|-0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 11.54295784600906,
+   "robot_drift_m": 0.07695881230940028,
+   "hit": true,
+   "t_first_move": 0.32,
+   "peak_speed": 1.4805461124380368,
+   "dir_deg": -36.68653722383627,
+   "dist_end_m": 2.886505996792964
+  },
+  "C_football|right|-0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 11.335828658103305,
+   "robot_drift_m": 0.10313807269265332,
+   "hit": true,
+   "t_first_move": 0.24,
+   "peak_speed": 1.5382182489083502,
+   "dir_deg": -28.274734400349995,
+   "dist_end_m": 2.987030101884611
+  },
+  "C_football|right|-0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 10.763604922094988,
+   "robot_drift_m": 0.08039746485847886,
+   "hit": true,
+   "t_first_move": 0.32,
+   "peak_speed": 1.362207292708303,
+   "dir_deg": -26.536832775285134,
+   "dist_end_m": 2.5749109434407913
+  },
+  "C_football|right|+0.000|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 11.456176019028,
+   "robot_drift_m": 0.08321118381645214,
+   "hit": true,
+   "t_first_move": 0.34,
+   "peak_speed": 1.5989008155783035,
+   "dir_deg": -34.541444234704805,
+   "dist_end_m": 3.1490761894995156
+  },
+  "C_football|right|+0.000|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 11.043394800973763,
+   "robot_drift_m": 0.1080171159911751,
+   "hit": true,
+   "t_first_move": 0.32,
+   "peak_speed": 1.5999779060164954,
+   "dir_deg": -26.520268502373465,
+   "dist_end_m": 3.1251768038539702
+  },
+  "C_football|right|+0.000|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 12.312508260712441,
+   "robot_drift_m": 0.08416906631169449,
+   "hit": true,
+   "t_first_move": 0.32,
+   "peak_speed": 1.5463411678695365,
+   "dir_deg": -24.43774576743004,
+   "dist_end_m": 3.0904704404532057
+  },
+  "C_football|right|+0.015|-0.015": {
+   "falls": 0,
+   "tilt_max_deg": 11.316857551098998,
+   "robot_drift_m": 0.10310386655497211,
+   "hit": true,
+   "t_first_move": 0.34,
+   "peak_speed": 1.7223329179059745,
+   "dir_deg": -32.46062795438294,
+   "dist_end_m": 3.337416641367821
+  },
+  "C_football|right|+0.015|+0.000": {
+   "falls": 0,
+   "tilt_max_deg": 11.092085440214595,
+   "robot_drift_m": 0.09753708685481546,
+   "hit": true,
+   "t_first_move": 0.34,
+   "peak_speed": 1.6619838842339483,
+   "dir_deg": -26.302437221375815,
+   "dist_end_m": 3.361119850097033
+  },
+  "C_football|right|+0.015|+0.015": {
+   "falls": 0,
+   "tilt_max_deg": 12.149534591182256,
+   "robot_drift_m": 0.14661763961485386,
+   "hit": true,
+   "t_first_move": 0.34,
+   "peak_speed": 1.6392457289388416,
+   "dir_deg": -19.196059901197074,
+   "dist_end_m": 3.3586818669483796
+  }
+ }
+}

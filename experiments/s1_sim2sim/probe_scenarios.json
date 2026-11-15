@@ -1,0 +1,229 @@
+{
+ "dt": 0.02,
+ "scenarios": {
+  "vx_-0.40": {
+   "duration": 10.0,
+   "segments": [
+    [
+     0.0,
+     -0.4,
+     0.0
+    ]
+   ],
+   "kind": "fixed"
+  },
+  "vx_-0.30": {
+   "duration": 10.0,
+   "segments": [
+    [
+     0.0,
+     -0.3,
+     0.0
+    ]
+   ],
+   "kind": "fixed"
+  },
+  "vx_-0.20": {
+   "duration": 10.0,
+   "segments": [
+    [
+     0.0,
+     -0.2,
+     0.0
+    ]
+   ],
+   "kind": "fixed"
+  },
+  "vx_-0.10": {
+   "duration": 10.0,
+   "segments": [
+    [
+     0.0,
+     -0.1,
+     0.0
+    ]
+   ],
+   "kind": "fixed"
+  },
+  "vx_+0.10": {
+   "duration": 10.0,
+   "segments": [
+    [
+     0.0,
+     0.1,
+     0.0
+    ]
+   ],
+   "kind": "fixed"
+  },
+  "vx_+0.20": {
+   "duration": 10.0,
+   "segments": [
+    [
+     0.0,
+     0.2,
+     0.0
+    ]
+   ],
+   "kind": "fixed"
+  },
+  "vx_+0.25": {
+   "duration": 10.0,
+   "segments": [
+    [
+     0.0,
+     0.25,
+     0.0
+    ]
+   ],
+   "kind": "fixed"
+  },
+  "vx_+0.30": {
+   "duration": 10.0,
+   "segments": [
+    [
+     0.0,
+     0.3,
+     0.0
+    ]
+   ],
+   "kind": "fixed"
+  },
+  "vx_+0.35": {
+   "duration": 10.0,
+   "segments": [
+    [
+     0.0,
+     0.35,
+     0.0
+    ]
+   ],
+   "kind": "fixed"
+  },
+  "vx_+0.40": {
+   "duration": 10.0,
+   "segments": [
+    [
+     0.0,
+     0.4,
+     0.0
+    ]
+   ],
+   "kind": "fixed"
+  },
+  "wz_+0.50": {
+   "duration": 10.0,
+   "segments": [
+    [
+     0.0,
+     0.0,
+     0.5
+    ]
+   ],
+   "kind": "fixed"
+  },
+  "wz_+1.00": {
+   "duration": 10.0,
+   "segments": [
+    [
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "kind": "fixed"
+  },
+  "wz_+1.25": {
+   "duration": 10.0,
+   "segments": [
+    [
+     0.0,
+     0.0,
+     1.25
+    ]
+   ],
+   "kind": "fixed"
+  },
+  "wz_+1.50": {
+   "duration": 10.0,
+   "segments": [
+    [
+     0.0,
+     0.0,
+     1.5
+    ]
+   ],
+   "kind": "fixed"
+  },
+  "wz_+2.00": {
+   "duration": 10.0,
+   "segments": [
+    [
+     0.0,
+     0.0,
+     2.0
+    ]
+   ],
+   "kind": "fixed"
+  },
+  "wz_-1.50": {
+   "duration": 10.0,
+   "segments": [
+    [
+     0.0,
+     0.0,
+     -1.5
+    ]
+   ],
+   "kind": "fixed"
+  },
+  "kickstart_0.3_then_0.15": {
+   "duration": 13.0,
+   "segments": [
+    [
+     0.0,
+     0.3,
+     0.0
+    ],
+    [
+     3.0,
+     0.15,
+     0.0
+    ]
+   ],
+   "kind": "fixed"
+  },
+  "kickstart_0.3_then_back": {
+   "duration": 13.0,
+   "segments": [
+    [
+     0.0,
+     0.3,
+     0.0
+    ],
+    [
+     3.0,
+     -0.3,
+     0.0
+    ]
+   ],
+   "kind": "fixed"
+  },
+  "kickstart_0.3_then_turn1": {
+   "duration": 13.0,
+   "segments": [
+    [
+     0.0,
+     0.3,
+     0.0
+    ],
+    [
+     3.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "kind": "fixed"
+  }
+ }
+}

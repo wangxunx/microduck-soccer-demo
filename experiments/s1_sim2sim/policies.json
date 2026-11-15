@@ -1,0 +1,7 @@
+{
+  "official_walk": "../../game/public/assets/policies/BEST_alpha_walking.onnx",
+  "genesis_velocity": "../../../microduck-rl-genesis/policies/velocity.onnx",
+  "genesis_velocity_repro": "../../../microduck-rl-genesis/policies/velocity-reproduced.onnx",
+  "genesis_rough": "../../../microduck-rl-genesis/policies/rough.onnx",
+  "genesis_backlash": "../../../microduck-rl-genesis/policies/backlash.onnx"
+}

@@ -1,0 +1,38 @@
+# --- not part of this repository -------------------------------------------
+# Upstream browser game: no license upstream, recreated by ./setup_game.sh
+game/
+# Temporary slide deck work
+deck/
+
+# --- generic ---------------------------------------------------------------
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+*.log
+.DS_Store
+
+# --- training: keep code, recipes, the final model and evaluation summaries --
+# raw training stdout
+training/logs_*.out
+# checkpoints (~1.2 GB): keep each run's recipe and the final model's checkpoint
+training/logs/*/*
+!training/logs/*/recipe.json
+!training/logs/football-v4ft-v3/model_2998.pt
+training/logs/smoke/
+# exported candidates: keep only the selected model
+training/exports/*
+!training/exports/football-v4ft-v3-2998.onnx
+!training/exports/football-v4ft-v3-2998.json
+# evaluation raw data (regenerable): keep game_eval.json + s4_report*
+training/evals/**/*.frames.json
+training/evals/**/s4_mujoco.json
+training/evals/**/s4_genesis.json
+
+# --- experiments S1-S4: keep scripts, READMEs and reports, drop raw trajectories
+experiments/*/results/*.json
+!experiments/*/results/metrics.json
+!experiments/s2_genesis_ball_bench/results/*.json
+!experiments/s3_ball_dynamics/results/crosscheck_wasm.json
+!experiments/s3_ball_dynamics/results/rollfric_calibration.json
+experiments/*/results/_scene_parts/

@@ -1,0 +1,29 @@
+{
+ "config": {
+  "model": "walk",
+  "ball": false,
+  "self_collision": "on",
+  "max_pairs": null,
+  "num_envs": 4096,
+  "warmup": 50,
+  "steps": 400,
+  "policy": "microduck-rl-genesis/policies/velocity.onnx",
+  "out": "results/walk_4096.json"
+ },
+ "num_envs": 4096,
+ "build_s": 88.75392317771912,
+ "robot_links": 15,
+ "robot_geoms": 5,
+ "step_ms_mean": 43.693509101867676,
+ "step_ms_p95": 52.51750946044922,
+ "env_steps_per_s": 93743.90119252099,
+ "ppo_iter_rollout_s_24steps": 1.0486442184448241,
+ "onnx_cpu_infer_ms_mean": 9.081259369850159,
+ "physical_gpu": "card3",
+ "vram_used_gb_by_process_approx": 1.476448256,
+ "vram_total_gb": 34.208743424,
+ "fall_rate_per_env_step": 3.41796875e-05,
+ "resets": 56,
+ "solver_error_env_steps": 0,
+ "nan_obs_env_steps": 0
+}

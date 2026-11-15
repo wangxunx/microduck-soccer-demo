@@ -1,0 +1,29 @@
+{
+ "config": {
+  "model": "allcollisions",
+  "ball": false,
+  "self_collision": "on",
+  "max_pairs": null,
+  "num_envs": 4096,
+  "warmup": 50,
+  "steps": 400,
+  "policy": "microduck-rl-genesis/policies/velocity.onnx",
+  "out": "results/allcol_4096.json"
+ },
+ "num_envs": 4096,
+ "build_s": 123.06181311607361,
+ "robot_links": 15,
+ "robot_geoms": 11,
+ "step_ms_mean": 44.94898021221161,
+ "step_ms_p95": 53.43354940414429,
+ "env_steps_per_s": 91125.53790235291,
+ "ppo_iter_rollout_s_24steps": 1.0787755250930786,
+ "onnx_cpu_infer_ms_mean": 9.702388644218445,
+ "physical_gpu": "card2",
+ "vram_used_gb_by_process_approx": 2.68529664,
+ "vram_total_gb": 34.208743424,
+ "fall_rate_per_env_step": 3.662109375e-05,
+ "resets": 60,
+ "solver_error_env_steps": 0,
+ "nan_obs_env_steps": 0
+}
