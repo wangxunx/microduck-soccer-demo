@@ -42,7 +42,11 @@ HIP_VISIBLE_DEVICES=0 $PY train_football.py -e smoke -B 64 --max-iterations 5
 ./evaluate_candidate.sh <exp-name> <checkpoint> 0
 ```
 
-## Credits and licenses
+## License
+
+This repository's code and trained policy weights are licensed under the **Apache License 2.0** (see [LICENSE](LICENSE) and [NOTICE](NOTICE)). The weights were trained with the Microduck robot model, whose 3D geometry remains under CC BY-NC-SA 4.0 (non-commercial); third-party components below keep their own licenses.
+
+## Credits
 
 - Robot model, MJCF and recipe: [pollen-robotics/microduck_rl](https://github.com/pollen-robotics/microduck_rl)
   (code Apache-2.0; **3D model files CC BY-NC-SA 4.0, non-commercial**). The meshes are used from the
@@ -64,3 +68,5 @@ HIP_VISIBLE_DEVICES=0 $PY train_football.py -e smoke -B 64 --max-iterations 5
 在游戏自带评估器中（11 个场景，单次评估），AMD 训练的踢球模型进球 68 个、踢球跌倒 0 次；游戏原有的踢球模型是 61 个、0 次。在 AMD 上训练的只有**行走**和**踢球**两个模型，起身/恢复和舞蹈模型沿用原版。
 
 训练、实验和评估的详细说明见各目录下的 README。
+
+本仓库的代码和训练出的模型权重采用 **Apache License 2.0**（见 LICENSE 和 NOTICE）。权重是用 Microduck 机器人模型训练的，其 3D 几何仍遵守 CC BY-NC-SA 4.0（非商用）。

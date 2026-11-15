@@ -1,0 +1,29 @@
+microduck-soccer-demo
+Copyright 2026 wangxunx
+
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This project builds on third-party work, which keeps its own license:
+
+1. pollen-robotics/microduck_rl, Apache License 2.0
+   https://github.com/pollen-robotics/microduck_rl
+   Microduck task recipe, observation contract and MJCF robot descriptions.
+   The Microduck 3D model files are licensed CC BY-NC-SA 4.0 (non-commercial)
+   and are NOT included in this repository.
+
+2. Macmachi/microduck-rl-genesis, Apache License 2.0
+   https://github.com/Macmachi/microduck-rl-genesis
+   Genesis port of the Microduck environment (imported, not copied).
+
+3. Rhoban/bam, Apache License 2.0
+   https://github.com/Rhoban/bam
+   BAM M6 actuator model for the Dynamixel XL330 (used through microduck-rl-genesis).
+
+4. Genesis-Embodied-AI/Genesis, Apache License 2.0; leggedrobotics/rsl_rl, BSD 3-Clause.
+
+5. wander521/microduck-robot-soccer (no license file upstream). Not included:
+   setup_game.sh fetches it at a fixed commit and applies game-patches/.
+
+Trained policy weights in this repository (training/exports/, training/logs/)
+are released under the Apache License 2.0. They were trained with the Microduck
+robot model, whose geometry remains under CC BY-NC-SA 4.0.
