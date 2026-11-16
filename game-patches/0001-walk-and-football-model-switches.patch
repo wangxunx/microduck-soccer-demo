@@ -32,7 +32,7 @@ index bb27508..5263c46 100644
    }
    send(message) {
 diff --git a/src/main.js b/src/main.js
-index d956b6f..c458c8b 100644
+index d956b6f..23099ef 100644
 --- a/src/main.js
 +++ b/src/main.js
 @@ -1,4 +1,6 @@
@@ -42,7 +42,7 @@ index d956b6f..c458c8b 100644
  import { setText, setAttribute, setProperty } from "./dom-updates.js";
  import { t, runtimeMessage, chooseLanguage, setLanguage, getLanguage, bindStaticTranslations } from "./i18n.js";
  import { setRigTeam, disposeTeamSkin } from "./team-skin.js";
-@@ -30,6 +32,22 @@ const $$ = (selector) => {
+@@ -30,6 +32,28 @@ const $$ = (selector) => {
    return elementLists.get(selector);
  };
  const params = new URLSearchParams(location.search);
@@ -50,16 +50,22 @@ index d956b6f..c458c8b 100644
 +{
 +  const badge = document.createElement("div");
 +  try {
-+    badge.textContent =
-+      `行走模型：${resolveWalkPolicy(params.get("walk")).label} · ` +
-+      `射门模型：${resolveFootballPolicy(params.get("football")).label}`;
++    const walk = resolveWalkPolicy(params.get("walk"));
++    const football = resolveFootballPolicy(params.get("football"));
++    badge.textContent = `行走模型：${walk.label} · 射门模型：${football.label}`;
++    if (football.requiresGenesisWalk && !walk.key.startsWith("genesis")) {
++      badge.textContent += " · ⚠ 该射门模型请配 walk=genesis-v2";
++      badge.style.background = "rgba(160,60,0,.85)";
++    }
 +  } catch (error) {
 +    badge.textContent = error.message;
 +  }
++  const warnBg = badge.style.background;
 +  badge.style.cssText =
 +    "position:fixed;top:6px;left:50%;transform:translateX(-50%);z-index:9999;" +
 +    "padding:2px 10px;border-radius:10px;background:rgba(0,0,0,.55);color:#fff;" +
 +    "font:12px/1.6 system-ui,sans-serif;pointer-events:none";
++  if (warnBg) badge.style.background = warnBg;
 +  document.body.appendChild(badge);
 +}
  let sceneKey =
@@ -89,10 +95,10 @@ index ecc087e..f96ac2e 100644
      createPolicy: async (_path, bytes) => {
 diff --git a/src/physics/football-choice.js b/src/physics/football-choice.js
 new file mode 100644
-index 0000000..ee06280
+index 0000000..00f64ef
 --- /dev/null
 +++ b/src/physics/football-choice.js
-@@ -0,0 +1,19 @@
+@@ -0,0 +1,22 @@
 +// Selectable ball-aware football policy (URL ?football=<key>). Whitelisted manifests only.
 +// Every manifest still goes through runtime.js's contract validation (61D/14D,
 +// 50/200 Hz, 4-step actuator delay, 1-step joint-velocity delay, 1.75 A).
@@ -100,6 +106,9 @@ index 0000000..ee06280
 +export const FOOTBALL_POLICIES = {
 +  official: { manifest: "football.json", label: "原作者 (mjlab)" },
 +  genesis: { manifest: "genesis/football-v4ft-v3-2998.json", label: "Genesis v4ft-v3" },
++  // v5: trained with Genesis walking policies (walk-A / walk-D2) walking into the kick.
++  // Pair it with ?walk=genesis-v2: with the official walking policy it falls far more often.
++  "genesis-v5": { manifest: "genesis/football-v5-4497.json", label: "Genesis v5", requiresGenesisWalk: true },
 +};
 +export const DEFAULT_FOOTBALL = "official";
 +export function resolveFootballPolicy(key) {

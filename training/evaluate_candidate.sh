@@ -36,4 +36,6 @@ echo "== 4. S4 report"
 echo "== 5. game evaluator (all suites)"
 (cd "$GAME" && FOOTBALL_CANDIDATE="$ONNX" FOOTBALL_CURRENT=1.75 FOOTBALL_WINDOW=1.2 \
    node scripts/evaluate-football.mjs "$OUT/game_eval.json" all > "$OUT/game_eval.log" 2>&1)
+# the evaluator records the absolute game path; keep results free of local paths (public repo)
+sed -i "s#$(cd "$HERE/../.." && pwd)/##g" "$OUT/game_eval.json"
 "$PY" "$HERE/summarize_game_eval.py" "$OUT/game_eval.json" "$HERE/evals/baseline-author/game_eval.json"

@@ -1,0 +1,33 @@
+{
+  "schema": "microduck-game-football-v1",
+  "id": "genesis-football-v5-4497",
+  "enabled": true,
+  "file": "football-v5-4497.onnx",
+  "sha256": "538c0e7da4a5bcc5a2a00bc40117f20d946c27a19c3c34c33801842ae71d3bde",
+  "windowSeconds": 1.2,
+  "currentLimitAmps": 1.75,
+  "source": {
+    "trainer": "Genesis (AMD ROCm) via microduck-soccer-demo/training",
+    "parent": "https://github.com/pollen-robotics/microduck_rl",
+    "engine": "genesis + microduck-rl-genesis BAM actuator"
+  },
+  "training": {
+    "task": "Football-Genesis",
+    "checkpointIteration": 4497,
+    "seed": 1,
+    "status": "candidate"
+  },
+  "runtime": {
+    "observationSize": 61,
+    "actionSize": 14,
+    "policyHz": 50,
+    "physicsHz": 200,
+    "actuatorDelayPhysicsSteps": 4,
+    "jointVelocityDelayControlSteps": 1,
+    "bodyCommand": "yaw-relative ball x/y, yaw-relative ball velocity x/y, frozen shot direction x/y",
+    "handoff": "trained stand policy for 1 second, then walk"
+  },
+  "verification": {
+    "onnxVsTorchMaxAbs": 1.71661376953125e-05
+  }
+}

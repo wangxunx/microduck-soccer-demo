@@ -26,6 +26,8 @@ training/exports/*
 !training/exports/football-v4ft-v3-2998.json
 !training/exports/walk-A-5998.onnx
 !training/exports/walk-A-5998.json
+!training/exports/football-v5-4497.onnx
+!training/exports/football-v5-4497.json
 # evaluation raw data (regenerable): keep game_eval.json + s4_report*
 training/evals/**/*.frames.json
 training/evals/**/s4_mujoco.json

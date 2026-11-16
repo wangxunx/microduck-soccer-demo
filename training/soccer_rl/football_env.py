@@ -40,6 +40,7 @@ from . import football_cfg as F
 
 BALL_XML = Path(__file__).resolve().parent / "assets" / "ball_game.xml"
 GAME_POLICIES = Path(__file__).resolve().parents[2] / "game" / "public" / "assets" / "policies"
+EXPORTS = Path(__file__).resolve().parents[1] / "exports"
 
 
 class MicroduckFootballEnv(MicroduckVelocityEnv):
@@ -92,17 +93,31 @@ class MicroduckFootballEnv(MicroduckVelocityEnv):
         super()._build_buffers()
         n, d = self.num_envs, self.device
         self.handoff = bool(F.HANDOFF_IN_LOOP)
-        ep_s = (F.WINDOW_S + F.HANDOFF_STAND_S + F.HANDOFF_WALK_S) if self.handoff else F.EPISODE_LENGTH_S
+        self.preroll = bool(F.PREROLL)
+        assert self.handoff or not self.preroll, "PREROLL requires HANDOFF_IN_LOOP"
+        post_s = F.WINDOW_S + F.HANDOFF_STAND_S + F.HANDOFF_WALK_S
+        ep_s = (post_s + (F.PREROLL_S[1] if self.preroll else 0.0)) if self.handoff else F.EPISODE_LENGTH_S
         self.max_episode_length_s = ep_s
         self.max_episode_length = math.ceil(ep_s / self.dt)
+        self.post_steps = round(post_s / self.dt)
         self.window_steps = round(F.WINDOW_S / self.dt)
         self.stand_end_steps = round((F.WINDOW_S + F.HANDOFF_STAND_S) / self.dt)
-        self.fell_phase = torch.zeros(n, dtype=torch.long, device=d)  # 0 none, 1 in window, 2 after handoff
+        # Per-env step at which the kick window starts (0 = standing start, no pre-roll).
+        self.kick_start = torch.zeros(n, dtype=torch.long, device=d)
+        self.pre_settle_start = torch.zeros(n, dtype=torch.long, device=d)
+        self.pre_cmd = torch.zeros((n, 3), dtype=gs.tc_float, device=d)
+        self.pre_settle_wz = torch.zeros(n, dtype=gs.tc_float, device=d)
+        self.pre_walker = torch.zeros(n, dtype=torch.long, device=d)
+        self.fell_phase = torch.zeros(n, dtype=torch.long, device=d)  # 0 none, 1 window, 2 after handoff, 3 pre-roll
         if self.handoff:
             from .onnx_mlp import OnnxMlp
             self.stand_policy = OnnxMlp(str(GAME_POLICIES / "BEST_alpha_stand.onnx")).to(d)
             self.walk_policy = OnnxMlp(str(GAME_POLICIES / "BEST_alpha_walking.onnx")).to(d)
             self.aux_last_action = torch.zeros((n, MC.NUM_ACTIONS), dtype=gs.tc_float, device=d)
+        self.pre_walkers = []
+        if self.preroll:
+            from .onnx_mlp import OnnxMlp
+            self.pre_walkers = [OnnxMlp(str(EXPORTS / f)).to(d) for f in F.PREROLL_WALK_ONNX]
         self.aim_w = torch.zeros((n, 2), dtype=gs.tc_float, device=d)
         self.base_start_xy = torch.zeros((n, 2), dtype=gs.tc_float, device=d)
         self.base_start_yaw = torch.zeros(n, dtype=gs.tc_float, device=d)
@@ -144,10 +159,15 @@ class MicroduckFootballEnv(MicroduckVelocityEnv):
     def step(self, actions: torch.Tensor):
         if not self.handoff:
             return super().step(actions)
-        k = self.episode_length_buf
-        ctrl = k < self.window_steps                       # our policy acts
+        kr = self.episode_length_buf - self.kick_start      # steps since the kick window started (<0: pre-roll)
+        pre = kr < 0
+        ctrl = (kr >= 0) & (kr < self.window_steps)         # our policy acts
+        if self.preroll:
+            arm = (kr == -1).nonzero().flatten()            # next step starts the kick: place ball + aim now
+            if len(arm):
+                self._arm_kick(arm)
         if (~ctrl).any():
-            first = k == self.window_steps                 # game: lastAction <- q - HOME at handoff
+            first = kr == self.window_steps                 # game: lastAction <- q - HOME at handoff
             self.aux_last_action = torch.where(first.unsqueeze(1), self.dof_pos - self.default_dof_pos,
                                                self.aux_last_action)
             aux = self.obs["policy"].clone()
@@ -158,13 +178,25 @@ class MicroduckFootballEnv(MicroduckVelocityEnv):
             aux[:, 20:34] = vel                            # undelayed joint_vel (footballActive false)
             aux[:, 34:48] = self.aux_last_action
             aux[:, 48:] = 0.0                              # zero command, no ball slots
-            stand = k < self.stand_end_steps
-            aux_act = torch.where(stand.unsqueeze(1), self.stand_policy(aux), self.walk_policy(aux))
+            stand = kr < self.stand_end_steps
+            if self.preroll:
+                settle = self.episode_length_buf >= self.pre_settle_start
+                cmd = self.pre_cmd.clone()
+                cmd[:, 0] = torch.where(settle, torch.zeros_like(cmd[:, 0]), cmd[:, 0])
+                cmd[:, 2] = torch.where(settle, self.pre_settle_wz, cmd[:, 2])
+                aux_pre = aux.clone()
+                aux_pre[:, 48:51] = torch.where(pre.unsqueeze(1), cmd, torch.zeros_like(cmd))
+                walked = torch.stack([w(aux_pre) for w in self.pre_walkers], dim=0)  # (W, n, 14)
+                walk_act = walked[self.pre_walker, torch.arange(self.num_envs, device=self.device)]
+            else:
+                walk_act = self.walk_policy(aux)
+            aux_act = torch.where(stand.unsqueeze(1), self.stand_policy(aux), walk_act)
+            aux_act = torch.where(pre.unsqueeze(1), walk_act, aux_act)
             actions = torch.where(ctrl.unsqueeze(1), actions, aux_act)
             self.aux_last_action = torch.where(ctrl.unsqueeze(1), self.aux_last_action, aux_act)
         self.bam._delay._lag = torch.where(ctrl, self.fb_lag, torch.zeros_like(self.fb_lag))
-        self.bam.max_current[:, 0] = torch.where(ctrl, torch.full_like(k, 0, dtype=gs.tc_float) + F.CURRENT_LIMIT_A,
-                                                 torch.full_like(k, 0, dtype=gs.tc_float) + 1e9)
+        self.bam.max_current[:, 0] = torch.where(ctrl, torch.full_like(kr, 0, dtype=gs.tc_float) + F.CURRENT_LIMIT_A,
+                                                 torch.full_like(kr, 0, dtype=gs.tc_float) + 1e9)
         return super().step(actions)
 
     # --------------------------------------------------------------- commands
@@ -194,6 +226,7 @@ class MicroduckFootballEnv(MicroduckVelocityEnv):
             ep["kick_max_vperp"] = self.kick_max_vperp[env_ids].mean()
             ep["fall_in_window"] = (self.fell_phase[env_ids] == 1).float().mean()
             ep["fall_after_handoff"] = (self.fell_phase[env_ids] == 2).float().mean()
+            ep["fall_in_preroll"] = (self.fell_phase[env_ids] == 3).float().mean()
         self.fell_phase[env_ids] = 0
         self._zero_commands(env_ids)
         n, d = len(env_ids), self.device
@@ -207,6 +240,40 @@ class MicroduckFootballEnv(MicroduckVelocityEnv):
         v[:, :2] = _rand(-F.ROBOT_INIT_SPEED_MAX, F.ROBOT_INIT_SPEED_MAX, (n, 2), d) / math.sqrt(2)
         self.robot.set_dofs_velocity(v[:, :2], dofs_idx_local=[0, 1], envs_idx=env_ids)
 
+        self._place_ball_and_aim(env_ids, pos, yaw)
+        if self.handoff:
+            self.aux_last_action[env_ids] = 0.0
+        if self.preroll:
+            has_pre = torch.rand(n, device=d) < F.PREROLL_FRACTION
+            pre_steps = (_rand(*F.PREROLL_S, (n,), d) / self.dt).round().long() * has_pre
+            settle_steps = (_rand(*F.PREROLL_SETTLE_S, (n,), d) / self.dt).round().long()
+            self.kick_start[env_ids] = pre_steps
+            self.pre_settle_start[env_ids] = (pre_steps - settle_steps).clamp(min=0)
+            self.pre_cmd[env_ids, 0] = _rand(*F.PREROLL_VX, (n,), d)
+            self.pre_cmd[env_ids, 1] = 0.0
+            self.pre_cmd[env_ids, 2] = _rand(*F.PREROLL_WZ, (n,), d)
+            turn = torch.rand(n, device=d) < F.PREROLL_SETTLE_TURN_PROB
+            sgn = torch.where(torch.rand(n, device=d) < 0.5, -1.0, 1.0)
+            self.pre_settle_wz[env_ids] = sgn * _rand(*F.PREROLL_SETTLE_WZ, (n,), d) * turn
+            self.pre_walker[env_ids] = torch.randint(0, len(self.pre_walkers), (n,), device=d)
+            # park the ball far away during the pre-roll; _arm_kick places it before the kick
+            far = env_ids[has_pre]
+            if len(far):
+                park = pos[has_pre].clone()
+                park[:, 0] += 5.0
+                park[:, 2] = F.BALL_RADIUS
+                self.ball.set_pos(park, envs_idx=far)
+                self.ball.zero_all_dofs_velocity(envs_idx=far)
+
+    def _arm_kick(self, env_ids) -> None:
+        """Pre-roll ends next step: place ball/aim relative to the robot's current pose (like the AI trigger)."""
+        pos = self.robot.get_pos()[env_ids]
+        q = self.robot.get_quat()[env_ids]
+        yaw = torch.atan2(2 * (q[:, 0] * q[:, 3] + q[:, 1] * q[:, 2]), 1 - 2 * (q[:, 2] ** 2 + q[:, 3] ** 2))
+        self._place_ball_and_aim(env_ids, pos, yaw)
+
+    def _place_ball_and_aim(self, env_ids, pos, yaw) -> None:
+        n, d = len(env_ids), self.device
         fwd = _rand(*F.BALL_FWD_RANGE, (n,), d)
         side = _rand(*F.BALL_SIDE_RANGE, (n,), d)
         far = torch.rand(n, device=d) < F.FAR_BALL_FRACTION
@@ -287,7 +354,7 @@ class MicroduckFootballEnv(MicroduckVelocityEnv):
         ], dim=-1)
         assert policy.shape[-1] == F.OBS_SIZE, policy.shape
 
-        t = (self.episode_length_buf.float() * self.dt / F.EPISODE_LENGTH_S).unsqueeze(1)
+        t = ((self.episode_length_buf - self.kick_start).float().clamp(min=0) * self.dt / F.EPISODE_LENGTH_S).unsqueeze(1)
         ball_rel3 = torch.cat([self._yaw_frame(self.ball_pos[:, :2] - self.base_pos[:, :2]),
                                self.ball_pos[:, 2:3] - F.BALL_RADIUS], dim=-1)
         ball_vel3 = torch.cat([self._yaw_frame(self.ball_vel[:, :2]), self.ball_vel[:, 2:3]], dim=-1)
@@ -315,7 +382,9 @@ class MicroduckFootballEnv(MicroduckVelocityEnv):
         self.kick_max_vpar = torch.maximum(self.kick_max_vpar, vpar)
         self.kick_max_vperp = torch.where(vpar >= self.kick_max_vpar, vperp, self.kick_max_vperp)
 
-        t = self.episode_length_buf.float() * self.dt
+        kr = (self.episode_length_buf - self.kick_start).float()  # >= 1 once the first kick action was applied
+        active = (kr >= 1).to(gs.tc_float)                 # pre-roll steps earn nothing (not our actions)
+        t = kr * self.dt
         in_window = (t <= F.WINDOW_S + 1e-6) if self.handoff else torch.ones_like(t, dtype=torch.bool)
         settle = ((t >= F.SETTLE_START_S) & in_window).to(gs.tc_float)
         own = in_window.to(gs.tc_float)                    # terms that only make sense for our actions
@@ -350,17 +419,20 @@ class MicroduckFootballEnv(MicroduckVelocityEnv):
             w = self.reward_weights[name]
             if w == 0.0:
                 continue
-            value = torch.nan_to_num(fn() * w * self.dt, nan=0.0, posinf=0.0, neginf=0.0)
+            value = torch.nan_to_num(fn() * w * self.dt, nan=0.0, posinf=0.0, neginf=0.0) * active
             self.rew_buf += value
             self.episode_sums[name] += value
-        new_touch = self.ball_touched & ~was_touched & (vpar > F.TOUCH_BONUS_MIN_VPAR)
+        new_touch = self.ball_touched & ~was_touched & (vpar > F.TOUCH_BONUS_MIN_VPAR) & (active > 0)
         bonus = new_touch.to(gs.tc_float) * F.TOUCH_BONUS
         self.rew_buf += bonus
         self.episode_sums["touch_bonus"] += bonus
 
     # ------------------------------------------------------------ termination
     def _check_termination(self) -> None:
-        self.time_out_buf = self.episode_length_buf >= self.max_episode_length
+        if self.handoff:
+            self.time_out_buf = self.episode_length_buf >= self.kick_start + self.post_steps
+        else:
+            self.time_out_buf = self.episode_length_buf >= self.max_episode_length
         cos_tilt = -self.projected_gravity[:, 2].clamp(-1.0, 1.0)
         fell = cos_tilt < math.cos(math.radians(F.TERMINATION_TILT_DEG))
         nan_state = self.scene.rigid_solver.get_error_envs_mask()
@@ -370,9 +442,11 @@ class MicroduckFootballEnv(MicroduckVelocityEnv):
             self.reset_buf = nan_state | self.time_out_buf
         else:
             self.reset_buf = self.time_out_buf | fell | nan_state
-            after = (self.episode_length_buf > self.window_steps) if self.handoff else torch.zeros_like(fell)
-            self.fell_phase = torch.where(fell, torch.where(after, 2, 1), self.fell_phase)
-            pen = fell.to(gs.tc_float) * F.TERMINATION_PENALTY
+            kr = self.episode_length_buf - self.kick_start
+            after = (kr > self.window_steps) if self.handoff else torch.zeros_like(fell)
+            in_pre = kr < 1
+            self.fell_phase = torch.where(fell, torch.where(in_pre, 3, torch.where(after, 2, 1)), self.fell_phase)
+            pen = (fell & ~in_pre).to(gs.tc_float) * F.TERMINATION_PENALTY   # pre-roll falls are not ours
             self.rew_buf += pen
             self.episode_sums["termination"] += pen
         self._term_stats = {"fell_over": fell.to(gs.tc_float).mean(),

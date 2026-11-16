@@ -58,6 +58,22 @@ SETTLE_START_S = 0.8            # settle rewards switch on (handoff to stand at 
 HANDOFF_IN_LOOP = False
 HANDOFF_STAND_S = 1.0
 HANDOFF_WALK_S = 0.3
+
+# Walking pre-roll (v5, requires HANDOFF_IN_LOOP): before the kick window a real
+# walking policy walks the robot with approach-like commands, then the kick starts
+# from whatever state that produced. v4 kicks were trained from HOME standstill only:
+# with the faster walk-D2 the game scored 29 goals (kick-to-goal 37%) vs 71 with walk-A,
+# the robot arriving rotating (0.83 rad/s) and in D2's looser posture.
+PREROLL = False
+PREROLL_FRACTION = 0.75                   # rest: standing start as before
+PREROLL_S = (0.6, 2.0)                    # pre-roll length
+PREROLL_SETTLE_S = (0.2, 0.6)             # final part: forward 0 like the AI "settle" stage
+PREROLL_VX = (0.0, 0.3)                   # m/s, approach walking
+PREROLL_WZ = (-0.6, 0.6)                  # rad/s
+PREROLL_SETTLE_WZ = (0.54, 0.6)           # AI bang-bang turn: turnCommand >= 0.36 (x1.5 rad/s), <= 0.4
+PREROLL_SETTLE_TURN_PROB = 0.6
+# Deployed walking ONNX files (training/exports/), one picked per episode.
+PREROLL_WALK_ONNX = ("walk-D2-8997.onnx", "walk-A-5998.onnx")
 BALL_FWD_RANGE = (0.08, 0.20)
 BALL_SIDE_RANGE = (-0.095, 0.095)
 AIM_RANGE_RAD = 0.25

@@ -32,7 +32,7 @@ git clone https://github.com/Macmachi/microduck-rl-genesis.git ../microduck-rl-g
 
 # 1. the game, with the AMD-trained policies selectable
 ./setup_game.sh
-cd game && npm run dev     # http://localhost:5173/?walk=genesis-v2&football=genesis
+cd game && npm run dev     # http://localhost:5173/?walk=genesis-v2&football=genesis-v5
 
 # 2. training (one AMD GPU)
 cd training
