@@ -3,7 +3,7 @@
 #   ./evaluate_walk.sh <exp-name> <ckpt>          # exports logs/<exp>/model_<ckpt>.pt first
 #   ./evaluate_walk.sh --onnx <label> <file.onnx> # evaluate an existing ONNX (e.g. baselines)
 #
-# 1. S1 walking scenarios (14) + command sweep from standstill (19)  -> evals/walk/<id>/s1_*.json
+# 1. S1 walking scenarios (14) + command sweep from standstill (19) + stop/turn scenarios (4) -> evals/walk/<id>/s1_*.json
 # 2. full matches with our kicking policy (game evaluator, 11 scenarios) -> evals/walk/<id>/game_eval.json
 #    FOOTBALL_ONNX=<file.onnx> selects another kicking policy (output dir gets a +<name> suffix)
 set -euo pipefail
@@ -24,7 +24,8 @@ OUT="$HERE/evals/walk/$ID"; mkdir -p "$OUT"
 
 echo "== S1 scenarios + sweep (game MuJoCo)"
 (cd "$GAME" && node "$S1/run_mujoco.mjs" "$ID" "$ONNX" "$OUT/s1_mujoco.json" > "$OUT/s1_mujoco.log" &&
-               S1_SCENARIO_FILE=probe_scenarios.json node "$S1/run_mujoco.mjs" "$ID" "$ONNX" "$OUT/s1_probe.json" > "$OUT/s1_probe.log")
+               S1_SCENARIO_FILE=probe_scenarios.json node "$S1/run_mujoco.mjs" "$ID" "$ONNX" "$OUT/s1_probe.json" > "$OUT/s1_probe.log" &&
+               S1_SCENARIO_FILE=stop_scenarios.json node "$S1/run_mujoco.mjs" "$ID" "$ONNX" "$OUT/s1_stop.json" > "$OUT/s1_stop.log")
 
 echo "== matches with our kicking policy (game evaluator)"
 (cd "$GAME" && WALK_CANDIDATE="$ONNX" FOOTBALL_CANDIDATE="$FOOTBALL" FOOTBALL_CURRENT=1.75 FOOTBALL_WINDOW=1.2 \

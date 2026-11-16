@@ -16,6 +16,8 @@ Metric definitions (keep stable so versions stay comparable):
   S4 ball speed / dir              median peak ball speed (m/s) / direction (deg), game MuJoCo
   walk vx@0.3, wz@1.0              measured body speed for a fixed command (t >= 3 s), game MuJoCo
   walk rmse vx / wz                tracking error over 6 game-like random command sequences
+  stop dist / time                 slide after a 0.3 m/s -> 0 command, time to rest (< 0.03 m/s)
+  stop-go slide                    total slide in the three 0.5 s stop windows of a stop-go-stop sequence
 """
 import argparse
 import json
@@ -27,6 +29,7 @@ import numpy as np
 
 HERE = Path(__file__).resolve().parent
 EVALS = HERE / "evals"
+sys.path.insert(0, str(HERE.parent / "experiments" / "s1_sim2sim"))  # analyze.py, stop_metrics.py
 
 
 def match_metrics(game_eval: Path):
@@ -54,6 +57,23 @@ def match_metrics(game_eval: Path):
                     prev = rec
         m["kick_to_goal"] = scored / max(n, 1)
         m["kick_falls"] = kf
+        # single-player scenarios vs 2v2: in 2v2 both teams use the same policies, so a faster
+        # walker also defends better and total goals understate it (see MODELS.md §3)
+        res = {x["name"]: x for x in r}
+        for grp in ("single", "2v2"):
+            names = [nm for nm in fr if nm.startswith("2v2") == (grp == "2v2")]
+            k = sc = 0
+            for nm in names:
+                s = fr[nm]
+                for pi in range(len(s[0]["players"])):
+                    for i in range(1, len(s)):
+                        if s[i]["players"][pi]["kick"] > 0 and s[i - 1]["players"][pi]["kick"] == 0:
+                            k += 1
+                            sc += sum(s[min(len(s) - 1, i + 25)]["scores"].values()) > sum(s[i]["scores"].values())
+            m[f"{grp}_goals"] = sum(sum(res[nm]["goals"].values()) for nm in names)
+            m[f"{grp}_kicks"] = k
+            m[f"{grp}_kick_to_goal"] = sc / max(k, 1)
+            m[f"{grp}_falls"] = sum(res[nm]["recoveryEntries"] for nm in names)
     return m
 
 
@@ -73,7 +93,6 @@ def walk_metrics(d: Path):
     s1p = d / "s1_mujoco.json"
     out = {"match": match_metrics(d / "game_eval.json")}
     if s1p.exists():
-        sys.path.insert(0, str(HERE.parent / "experiments" / "s1_sim2sim"))
         import analyze as s1
         scen = json.loads((HERE.parent / "experiments/s1_sim2sim/scenarios.json").read_text())["scenarios"]
         runs = json.loads(s1p.read_text())["runs"]
@@ -83,6 +102,10 @@ def walk_metrics(d: Path):
                 "rmse_vx": float(np.mean([m[s]["vx_rmse"] for s in rnd])),
                 "rmse_wz": float(np.mean([m[s]["wz_rmse"] for s in rnd])),
                 "walk_falls": sum(v["falls"] for v in m.values())}
+    stop = d / "s1_stop.json"
+    if stop.exists():
+        from stop_metrics import stop_metrics
+        out |= stop_metrics(json.loads(stop.read_text())["runs"])
     return out
 
 
@@ -112,13 +135,27 @@ def main():
               f"{f(m.get('kick_falls'))} | {f(m.get('resets'))} | {f(s.get('handoff_tilt'), '{:.1f}°')} | {f(s.get('s4_falls'))} | "
               f"{f(s.get('speed'))} | {f(s.get('dir'), '{:+.1f}°')} |")
     print("\n## Walk policies and walk+kick pairs (game MuJoCo; match = game evaluator)\n")
-    print("| eval id | vx @0.3 | wz @1.0 | wz @1.5 | rmse vx | rmse wz | walk falls | goals | kick->goal | falls | kick falls | resets |")
-    print("|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|")
+    print("| eval id | vx @0.3 | wz @1.0 | wz @1.5 | rmse vx | rmse wz | walk falls | stop dist | stop time | stop-go slide | goals | kick->goal | falls | kick falls | resets |")
+    print("|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|")
     for k, v in walk.items():
         m = v["match"] or {}
         print(f"| {k} | {f(v.get('vx_0.30'), '{:.3f}')} | {f(v.get('wz_1.0'))} | {f(v.get('wz_1.5'))} | {f(v.get('rmse_vx'), '{:.3f}')} | "
-              f"{f(v.get('rmse_wz'), '{:.3f}')} | {f(v.get('walk_falls'))} | {f(m.get('goals'))} | {f(m.get('kick_to_goal'), '{:.0%}')} | "
+              f"{f(v.get('rmse_wz'), '{:.3f}')} | {f(v.get('walk_falls'))} | {f(v.get('stop_dist') and v['stop_dist'] * 100, '{:.1f} cm')} | "
+              f"{f(v.get('stop_time'), '{:.2f} s')} | {f(v.get('sgs_dist') and v['sgs_dist'] * 100, '{:.1f} cm')} | {f(m.get('goals'))} | {f(m.get('kick_to_goal'), '{:.0%}')} | "
               f"{f(m.get('falls'))} | {f(m.get('kick_falls'))} | {f(m.get('resets'))} |")
+    print_split(walk)
+
+
+def print_split(walk):
+    print("\n## Walk+kick pairs: single-player scenarios (8) vs 2v2 (3 games)\n")
+    print("| eval id | single goals | single kicks | single kick->goal | single falls | 2v2 goals | 2v2 kick->goal | 2v2 falls |")
+    print("|---|---:|---:|---:|---:|---:|---:|---:|")
+    for k, v in walk.items():
+        m = v["match"] or {}
+        if "single_goals" not in m:
+            continue
+        print(f"| {k} | {m['single_goals']} | {m['single_kicks']} | {m['single_kick_to_goal']:.0%} | {m['single_falls']} | "
+              f"{m['2v2_goals']} | {m['2v2_kick_to_goal']:.0%} | {m['2v2_falls']} |")
 
 
 if __name__ == "__main__":

@@ -26,6 +26,8 @@ training/exports/*
 !training/exports/football-v4ft-v3-2998.json
 !training/exports/walk-A-5998.onnx
 !training/exports/walk-A-5998.json
+!training/exports/walk-E3-10996.onnx
+!training/exports/walk-E3-10996.json
 !training/exports/football-v5-4497.onnx
 !training/exports/football-v5-4497.json
 # evaluation raw data (regenerable): keep game_eval.json + s4_report*
@@ -34,6 +36,7 @@ training/evals/**/s4_mujoco.json
 training/evals/**/s4_genesis.json
 training/evals/**/s1_mujoco.json
 training/evals/**/s1_probe.json
+training/evals/**/s1_stop.json
 
 # --- experiments S1-S4: keep scripts, READMEs and reports, drop raw trajectories
 experiments/*/results/*.json

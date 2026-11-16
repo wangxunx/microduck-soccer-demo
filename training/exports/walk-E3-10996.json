@@ -1,0 +1,23 @@
+{
+  "id": "genesis-walk-E3-10996",
+  "task": "walk (velocity tracking)",
+  "file": "walk-E3-10996.onnx",
+  "sha256": "18010f3e97abec8aab85df693cad280ce7ebd8b0e1540dceaa0e296de96f4877",
+  "checkpointIteration": 10996,
+  "robotModel": "walk",
+  "resumedFrom": "logs/walk-D2/model_8997.pt",
+  "recipeOverrides": [
+    "STD_WALKING.hip_pitch=0.6",
+    "STD_WALKING.knee=0.6",
+    "STD_WALKING.ankle=0.35",
+    "ACTION_RATE_WEIGHT_STAGES=[[0,-0.5]]",
+    "REL_FORWARD_ENVS=0.4",
+    "REWARD_WEIGHTS.track_linear_velocity=3.0",
+    "TWIST_CMD_RESAMPLE_S=[0.5,2.0]",
+    "STANDING_ENVS_STAGES=[[0,0.35]]",
+    "TURN_IN_PLACE_FRACTION=0.3",
+    "REWARD_WEIGHTS.track_angular_velocity=3.0"
+  ],
+  "contract": "61D obs / 14D action / 50 Hz, same as BEST_alpha_walking.onnx",
+  "onnxVsTorchMaxAbs": 5.7220458984375e-06
+}

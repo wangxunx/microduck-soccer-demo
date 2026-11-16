@@ -1,0 +1,388 @@
+{
+ "meta": {
+  "task": "walk",
+  "robot_model": "walk",
+  "resume": "logs/walk-D2/model_8997.pt",
+  "curriculum_start_iter": 9000,
+  "overrides": [
+   "STD_WALKING.hip_pitch=0.6",
+   "STD_WALKING.knee=0.6",
+   "STD_WALKING.ankle=0.35",
+   "ACTION_RATE_WEIGHT_STAGES=[[0,-0.5]]",
+   "REL_FORWARD_ENVS=0.4",
+   "REWARD_WEIGHTS.track_linear_velocity=3.0",
+   "TWIST_CMD_RESAMPLE_S=[0.5,2.0]"
+  ]
+ },
+ "velocity_cfg": {
+  "NUM_STEPS_PER_ENV": 24,
+  "TURN_IN_PLACE_FRACTION": 0.15,
+  "ENABLE_COM_RANDOMIZATION": true,
+  "ENABLE_HEAD_COM_RANDOMIZATION": true,
+  "ENABLE_KP_RANDOMIZATION": false,
+  "ENABLE_KD_RANDOMIZATION": false,
+  "ENABLE_MASS_INERTIA_RANDOMIZATION": true,
+  "ENABLE_JOINT_FRICTION_RANDOMIZATION": true,
+  "ENABLE_ARMATURE_RANDOMIZATION": true,
+  "ENABLE_VELOCITY_PUSHES": true,
+  "ENABLE_IMU_ORIENTATION_RANDOMIZATION": true,
+  "ENABLE_ENCODER_BIAS": true,
+  "ENABLE_FOOT_FRICTION_RANDOMIZATION": true,
+  "ENABLE_SELF_COLLISION_PENALTY": true,
+  "HEAD_POSE_CMD_RESAMPLE_S": [
+   2.0,
+   5.0
+  ],
+  "BODY_POSE_CMD_RESAMPLE_S": [
+   2.0,
+   5.0
+  ],
+  "TWIST_CMD_RESAMPLE_S": [
+   0.5,
+   2.0
+  ],
+  "MASS_INERTIA_RANDOMIZATION_RANGE": [
+   0.95,
+   1.05
+  ],
+  "KP_RANDOMIZATION_RANGE": [
+   0.85,
+   1.15
+  ],
+  "KD_RANDOMIZATION_RANGE": [
+   0.9,
+   1.1
+  ],
+  "JOINT_FRICTION_RANDOMIZATION_RANGE": [
+   0.9,
+   1.1
+  ],
+  "ARMATURE_RANDOMIZATION_RANGE": [
+   0.9,
+   1.1
+  ],
+  "FOOT_FRICTION_RANDOMIZATION_RANGE": [
+   0.7,
+   1.3
+  ],
+  "VELOCITY_PUSH_INTERVAL_S": [
+   3.0,
+   6.0
+  ],
+  "VELOCITY_PUSH_RANGE": [
+   -0.3,
+   0.3
+  ],
+  "IMU_ORIENTATION_RANDOMIZATION_ANGLE": 6.0,
+  "ENCODER_BIAS_RANGE": [
+   -0.015,
+   0.015
+  ],
+  "CMD_LIN_VEL_X": [
+   -0.4,
+   0.4
+  ],
+  "CMD_LIN_VEL_Y": [
+   -0.3,
+   0.3
+  ],
+  "CMD_ANG_VEL_Z": [
+   -1.0,
+   1.0
+  ],
+  "REL_FORWARD_ENVS": 0.4,
+  "BODY_POSE_RANGES": [
+   [
+    -0.005,
+    0.005
+   ],
+   [
+    -0.005,
+    0.005
+   ],
+   [
+    -0.005,
+    0.005
+   ],
+   [
+    -0.05,
+    0.05
+   ],
+   [
+    -0.05,
+    0.05
+   ],
+   [
+    -0.05,
+    0.05
+   ]
+  ],
+  "STD_STANDING": {
+   "hip_yaw": 0.1,
+   "hip_roll": 0.05,
+   "hip_pitch": 0.15,
+   "knee": 0.15,
+   "ankle": 0.1
+  },
+  "STD_WALKING": {
+   "hip_yaw": 0.3,
+   "hip_roll": 0.05,
+   "hip_pitch": 0.6,
+   "knee": 0.6,
+   "ankle": 0.35
+  },
+  "WALKING_THRESHOLD": 0.01,
+  "REWARD_WEIGHTS": {
+   "track_linear_velocity": 3.0,
+   "track_angular_velocity": 2.0,
+   "upright": 2.0,
+   "pose": 1.0,
+   "body_ang_vel": -0.05,
+   "angular_momentum": -0.02,
+   "dof_pos_limits": -1.0,
+   "action_rate_l2": -0.1,
+   "air_time": 3.0,
+   "foot_clearance": -2.0,
+   "foot_swing_height": -0.25,
+   "foot_slip": -0.1,
+   "self_collisions": -1.0,
+   "head_pose_tracking": 2.0,
+   "head_pose_bias": 0.0,
+   "body_pose_tracking": 0.0
+  },
+  "REWARD_PARAMS": {
+   "track_linear_velocity_std": 0.31622776601683794,
+   "track_angular_velocity_std": 0.7071067811865476,
+   "upright_std": 0.22360679774997896,
+   "air_time_min": 0.125,
+   "air_time_max": 0.3,
+   "command_threshold": 0.01,
+   "foot_clearance_target": 0.02,
+   "foot_swing_height_target": 0.02,
+   "head_pose_std": 0.5,
+   "head_pose_bias_tau_s": 1.0,
+   "self_collision_force_threshold": 10.0
+  },
+  "OBS_NOISE": {
+   "base_ang_vel": 0.03,
+   "projected_gravity": 0.01,
+   "joint_pos": 0.001,
+   "joint_vel": 0.25
+  },
+  "OBS_DELAY": {
+   "base_ang_vel": [
+    0,
+    1,
+    64
+   ],
+   "projected_gravity": [
+    0,
+    1,
+    64
+   ],
+   "joint_vel": [
+    1,
+    1,
+    0
+   ]
+  },
+  "EPISODE_LENGTH_S": 20.0,
+  "SIM_DT": 0.005,
+  "DECIMATION": 4,
+  "ACTION_SCALE": 1.0,
+  "RESET_HEIGHT_RANGE": [
+   0.12,
+   0.13
+  ],
+  "TERMINATION_TILT_DEG": 70.0,
+  "ACTION_RATE_WEIGHT_STAGES": [
+   [
+    0,
+    -0.5
+   ]
+  ],
+  "HEAD_POSE_BIAS_WEIGHT_STAGES": [
+   [
+    0,
+    0.0
+   ],
+   [
+    14400,
+    1.0
+   ],
+   [
+    24000,
+    2.0
+   ],
+   [
+    36000,
+    3.0
+   ]
+  ],
+  "STANDING_ENVS_STAGES": [
+   [
+    0,
+    0.02
+   ],
+   [
+    12000,
+    0.05
+   ],
+   [
+    18000,
+    0.1
+   ],
+   [
+    24000,
+    0.15
+   ],
+   [
+    36000,
+    0.2
+   ],
+   [
+    48000,
+    0.25
+   ]
+  ],
+  "HEAD_POSE_RANGE_STAGES": [
+   [
+    0,
+    [
+     [
+      -0.05,
+      0.05
+     ],
+     [
+      -0.05,
+      0.05
+     ],
+     [
+      -0.07,
+      0.07
+     ],
+     [
+      -0.015,
+      0.015
+     ]
+    ]
+   ],
+   [
+    12000,
+    [
+     [
+      -0.17,
+      0.17
+     ],
+     [
+      -0.17,
+      0.17
+     ],
+     [
+      -0.21,
+      0.21
+     ],
+     [
+      -0.047,
+      0.047
+     ]
+    ]
+   ],
+   [
+    24000,
+    [
+     [
+      -0.39,
+      0.39
+     ],
+     [
+      -0.39,
+      0.39
+     ],
+     [
+      -0.49,
+      0.49
+     ],
+     [
+      -0.11,
+      0.11
+     ]
+    ]
+   ],
+   [
+    36000,
+    [
+     [
+      -0.72,
+      0.72
+     ],
+     [
+      -0.72,
+      0.72
+     ],
+     [
+      -0.91,
+      0.91
+     ],
+     [
+      -0.2,
+      0.2
+     ]
+    ]
+   ],
+   [
+    48000,
+    [
+     [
+      -1.1,
+      1.1
+     ],
+     [
+      -1.1,
+      1.1
+     ],
+     [
+      -1.4,
+      1.4
+     ],
+     [
+      -0.31,
+      0.31
+     ]
+    ]
+   ]
+  ],
+  "COM_RANGE_STAGES": [
+   [
+    0,
+    0.003
+   ],
+   [
+    12000,
+    0.005
+   ],
+   [
+    24000,
+    0.01
+   ],
+   [
+    36000,
+    0.015
+   ]
+  ],
+  "HEAD_COM_RANGE_STAGES": [
+   [
+    0,
+    0.003
+   ],
+   [
+    12000,
+    0.005
+   ],
+   [
+    24000,
+    0.01
+   ]
+  ]
+ }
+}

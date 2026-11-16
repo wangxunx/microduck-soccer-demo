@@ -21,6 +21,7 @@ GENESIS_REPO=${MICRODUCK_GENESIS_REPO:-$HERE/../microduck-rl-genesis}
 FOOTBALL=football-v4ft-v3-2998
 FOOTBALL_V5=football-v5-4497
 WALK_V2=walk-A-5998
+WALK_FAST=walk-E3-10996
 
 if [ -e "$GAME_DIR" ]; then
   echo "error: $GAME_DIR already exists (remove it or set GAME_DIR)" >&2
@@ -45,6 +46,7 @@ for f in velocity velocity-reproduced rough backlash; do   # walking (?walk=gene
 done
 cp "$HERE/training/exports/$FOOTBALL.onnx" "$HERE/training/exports/$FOOTBALL.json" "$DST/"   # kicking (?football=genesis)
 cp "$HERE/training/exports/$WALK_V2.onnx" "$HERE/training/exports/$WALK_V2.json" "$DST/"       # walking v2 (?walk=genesis-v2)
+cp "$HERE/training/exports/$WALK_FAST.onnx" "$HERE/training/exports/$WALK_FAST.json" "$DST/"   # fast gait (?walk=genesis-fast)
 cp "$HERE/training/exports/$FOOTBALL_V5.onnx" "$HERE/training/exports/$FOOTBALL_V5.json" "$DST/" # kicking v5 (?football=genesis-v5)
 
 echo "== npm ci"
