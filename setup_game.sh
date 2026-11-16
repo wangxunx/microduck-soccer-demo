@@ -19,6 +19,7 @@ UPSTREAM=https://github.com/wander521/microduck-robot-soccer.git
 COMMIT=b0aee3d4c12d8c3969e4c4cfcb2a214477429cf1
 GENESIS_REPO=${MICRODUCK_GENESIS_REPO:-$HERE/../microduck-rl-genesis}
 FOOTBALL=football-v4ft-v3-2998
+WALK_V2=walk-A-5998
 
 if [ -e "$GAME_DIR" ]; then
   echo "error: $GAME_DIR already exists (remove it or set GAME_DIR)" >&2
@@ -42,6 +43,7 @@ for f in velocity velocity-reproduced rough backlash; do   # walking (?walk=gene
   cp "$GENESIS_REPO/policies/$f.onnx" "$DST/"
 done
 cp "$HERE/training/exports/$FOOTBALL.onnx" "$HERE/training/exports/$FOOTBALL.json" "$DST/"   # kicking (?football=genesis)
+cp "$HERE/training/exports/$WALK_V2.onnx" "$HERE/training/exports/$WALK_V2.json" "$DST/"       # walking v2 (?walk=genesis-v2)
 
 echo "== npm ci"
 (cd "$GAME_DIR" && npm ci --silent)
@@ -50,5 +52,5 @@ cat <<EOF
 
 Done. Run the game:
   cd $GAME_DIR && npm run dev
-  open http://localhost:5173/?lang=en&walk=genesis&football=genesis
+  open http://localhost:5173/?lang=en&walk=genesis-v2&football=genesis
 EOF

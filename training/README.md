@@ -80,3 +80,24 @@ HIP_VISIBLE_DEVICES=1 $PY train_football.py -e football-v1 -B 4096 --max-iterati
 - 方向：MuJoCo 里平均偏 +5°。
 - 交接后倾角 12.5°，原作者是 5.6°。
 - 训练时机器人从静止开始；游戏里踢球前是在走路的。可以用行走策略先跑一段，再从走动状态开始训练。
+
+## 行走训练（2026-11-15）
+
+| 文件 | 作用 |
+|---|---|
+| `train_walk.py` | 在 Genesis 上继续训练行走策略（直接使用 microduck-rl-genesis 的 `MicroduckVelocityEnv`），支持 `--resume`、`--curriculum-start-iter`、`--model allcollisions`，以及用 `--set` 覆盖配方参数 |
+| `export_walk.py` | 导出单文件 ONNX（归一化烘焙进图，并与 torch 输出对比） |
+| `evaluate_walk.sh` | 在游戏的 MuJoCo 里评估：S1 的 14 个场景、从静止开始的指令扫描，以及配合射门模型打整场比赛（游戏评估器的 `WALK_CANDIDATE`） |
+| `summarize_walk_eval.py` | 对比多个行走策略 |
+
+| 版本 | 改动（都从 Genesis 行走 checkpoint 2999 继续） | 0.3 m/s 实际速度 | 1.0 rad/s 实际转速 | 比赛进球 / 跌倒 |
+|---|---|---:|---:|---:|
+| 官方 `BEST_alpha_walking` | – | 0.112 | 0 | 68 / 10 |
+| **walk-A** ✅ | 原配方再训 3000 轮 | 0.107 | **1.02** | **71 / 2** |
+| walk-B | 速度和转向跟踪的 std 收紧 | 0.096 | 0.40 | 59 / 0 |
+| walk-C | B + 全碰撞模型 + 转向范围 ±1.5 | 0.102 | −0.02 | 41 / 1 |
+| walk-D2 | 在 walk-A 基础上放宽步幅（姿态 std、平滑惩罚、前进跟踪权重） | **0.246** | 0.89 | 29 / 6 |
+
+- 已加入游戏：`?walk=genesis-v2`（即 walk-A，`exports/walk-A-5998.onnx`）。
+- 收紧跟踪的 std 会让转向能力消失。前进速度卡在约 0.1 m/s，限制来自步态相关的奖励设置，放宽后（D2）速度提高约 2.3 倍。
+- D2 在比赛里表现差，原因是射门模型只在"标准站姿、静止"状态下训练过，D2 停到球前时的姿态和转动它应付不了。下一步：训练射门时先让行走策略走一段，再接射门。

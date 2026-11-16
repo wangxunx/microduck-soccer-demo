@@ -1,0 +1,319 @@
+{
+  "suite": "all",
+  "results": [
+    {
+      "name": "single-centre",
+      "duration": 45,
+      "players": 1,
+      "kickAttempts": 3,
+      "chargeAttempts": 0,
+      "chargeHits": 0,
+      "kickDistances": [
+        0.1444284811662302,
+        0.15742520157328305,
+        0.14860927095541573
+      ],
+      "goals": {
+        "blue": 1,
+        "orange": 0
+      },
+      "firstGoalSeconds": 29.060000000000002,
+      "ballSlowSeconds": 35.339999999999925,
+      "teammatesCloseSeconds": 0,
+      "threeAtBallSeconds": 0,
+      "recoveryEntries": 0,
+      "forcedResets": 0,
+      "fallenRobotSeconds": 0,
+      "ballPathMetres": 4.786088767176487,
+      "ballMaxSpeed": 1.6933553987564844,
+      "finite": true
+    },
+    {
+      "name": "single-offset",
+      "duration": 45,
+      "players": 1,
+      "kickAttempts": 2,
+      "chargeAttempts": 0,
+      "chargeHits": 0,
+      "kickDistances": [
+        0.1543715644549246,
+        0.1611924209851549
+      ],
+      "goals": {
+        "blue": 0,
+        "orange": 0
+      },
+      "firstGoalSeconds": null,
+      "ballSlowSeconds": 34.89999999999986,
+      "teammatesCloseSeconds": 0,
+      "threeAtBallSeconds": 0,
+      "recoveryEntries": 1,
+      "forcedResets": 0,
+      "fallenRobotSeconds": 3.3000000000000025,
+      "ballPathMetres": 3.258433261385293,
+      "ballMaxSpeed": 1.7062531471798634,
+      "finite": true
+    },
+    {
+      "name": "single-sideline",
+      "duration": 45,
+      "players": 1,
+      "kickAttempts": 2,
+      "chargeAttempts": 0,
+      "chargeHits": 0,
+      "kickDistances": [
+        0.1532610267212177,
+        0.15608706174009726
+      ],
+      "goals": {
+        "blue": 1,
+        "orange": 0
+      },
+      "firstGoalSeconds": 36.44,
+      "ballSlowSeconds": 38.42000000000041,
+      "teammatesCloseSeconds": 0,
+      "threeAtBallSeconds": 0,
+      "recoveryEntries": 0,
+      "forcedResets": 0,
+      "fallenRobotSeconds": 0,
+      "ballPathMetres": 1.7700147026403452,
+      "ballMaxSpeed": 1.73960868423711,
+      "finite": true
+    },
+    {
+      "name": "2v2-default",
+      "duration": 120,
+      "players": 4,
+      "kickAttempts": 9,
+      "chargeAttempts": 5,
+      "chargeHits": 4,
+      "kickDistances": [
+        0.1491773672765969,
+        0.139649248979299,
+        0.1525902486220605,
+        0.14211039921256544,
+        0.15422474746088,
+        0.15728854980135248,
+        0.14988194457099877,
+        0.1460630309953324,
+        0.14956325864048764
+      ],
+      "goals": {
+        "blue": 1,
+        "orange": 0
+      },
+      "firstGoalSeconds": 51.7,
+      "ballSlowSeconds": 79.56000000000131,
+      "teammatesCloseSeconds": 3.2400000000000024,
+      "threeAtBallSeconds": 0.14,
+      "recoveryEntries": 8,
+      "forcedResets": 0,
+      "fallenRobotSeconds": 8.439999999999909,
+      "ballPathMetres": 10.857595766405595,
+      "ballMaxSpeed": 1.7404538075902665,
+      "finite": true
+    },
+    {
+      "name": "2v2-offset",
+      "duration": 120,
+      "players": 4,
+      "kickAttempts": 8,
+      "chargeAttempts": 6,
+      "chargeHits": 3,
+      "kickDistances": [
+        0.14229954147701665,
+        0.15422474746088,
+        0.1472055018199449,
+        0.14206962964513697,
+        0.15422474746088,
+        0.14860071823413223,
+        0.15694294817864068,
+        0.1576871894853459
+      ],
+      "goals": {
+        "blue": 1,
+        "orange": 3
+      },
+      "firstGoalSeconds": 11.44,
+      "ballSlowSeconds": 86.00000000000003,
+      "teammatesCloseSeconds": 2.5000000000000018,
+      "threeAtBallSeconds": 0,
+      "recoveryEntries": 6,
+      "forcedResets": 0,
+      "fallenRobotSeconds": 7.539999999999927,
+      "ballPathMetres": 10.732242747543099,
+      "ballMaxSpeed": 2.148010240911982,
+      "finite": true
+    },
+    {
+      "name": "2v2-spread",
+      "duration": 120,
+      "players": 4,
+      "kickAttempts": 7,
+      "chargeAttempts": 6,
+      "chargeHits": 3,
+      "kickDistances": [
+        0.15100331901627145,
+        0.17479873126251685,
+        0.15422474746088,
+        0.1579531246605706,
+        0.14771839925341199,
+        0.15490436482880238,
+        0.15701821806363547
+      ],
+      "goals": {
+        "blue": 0,
+        "orange": 2
+      },
+      "firstGoalSeconds": 13.44,
+      "ballSlowSeconds": 86.00000000000003,
+      "teammatesCloseSeconds": 0,
+      "threeAtBallSeconds": 0,
+      "recoveryEntries": 5,
+      "forcedResets": 0,
+      "fallenRobotSeconds": 4.57999999999999,
+      "ballPathMetres": 11.2152778028842,
+      "ballMaxSpeed": 1.999951777997036,
+      "finite": true
+    },
+    {
+      "name": "single-mirror",
+      "duration": 60,
+      "players": 1,
+      "kickAttempts": 4,
+      "chargeAttempts": 0,
+      "chargeHits": 0,
+      "kickDistances": [
+        0.15326783967867713,
+        0.14860927095541573,
+        0.15754964383325742,
+        0.14860927095541573
+      ],
+      "goals": {
+        "blue": 2,
+        "orange": 0
+      },
+      "firstGoalSeconds": 11.620000000000001,
+      "ballSlowSeconds": 49.70000000000217,
+      "teammatesCloseSeconds": 0,
+      "threeAtBallSeconds": 0,
+      "recoveryEntries": 0,
+      "forcedResets": 0,
+      "fallenRobotSeconds": 0,
+      "ballPathMetres": 6.473806571781873,
+      "ballMaxSpeed": 1.6755419956454078,
+      "finite": true
+    },
+    {
+      "name": "single-own-corner",
+      "duration": 60,
+      "players": 1,
+      "kickAttempts": 2,
+      "chargeAttempts": 0,
+      "chargeHits": 0,
+      "kickDistances": [
+        0.15261389045903223,
+        0.14903810801667355
+      ],
+      "goals": {
+        "blue": 1,
+        "orange": 0
+      },
+      "firstGoalSeconds": 57.300000000000004,
+      "ballSlowSeconds": 52.32000000000258,
+      "teammatesCloseSeconds": 0,
+      "threeAtBallSeconds": 0,
+      "recoveryEntries": 0,
+      "forcedResets": 0,
+      "fallenRobotSeconds": 0,
+      "ballPathMetres": 3.9509203550552647,
+      "ballMaxSpeed": 1.7857994950269724,
+      "finite": true
+    },
+    {
+      "name": "single-opponent-corner",
+      "duration": 60,
+      "players": 1,
+      "kickAttempts": 2,
+      "chargeAttempts": 0,
+      "chargeHits": 0,
+      "kickDistances": [
+        0.15158207400018187,
+        0.15545480023489036
+      ],
+      "goals": {
+        "blue": 1,
+        "orange": 0
+      },
+      "firstGoalSeconds": 54.28,
+      "ballSlowSeconds": 53.24000000000272,
+      "teammatesCloseSeconds": 0,
+      "threeAtBallSeconds": 0,
+      "recoveryEntries": 0,
+      "forcedResets": 0,
+      "fallenRobotSeconds": 0,
+      "ballPathMetres": 2.571239647387672,
+      "ballMaxSpeed": 1.770569799563774,
+      "finite": true
+    },
+    {
+      "name": "single-orange",
+      "duration": 60,
+      "players": 1,
+      "kickAttempts": 5,
+      "chargeAttempts": 0,
+      "chargeHits": 0,
+      "kickDistances": [
+        0.1531479321582111,
+        0.15393459665768885,
+        0.15393459665768885,
+        0.15393459665768885,
+        0.15393459665768885
+      ],
+      "goals": {
+        "blue": 0,
+        "orange": 4
+      },
+      "firstGoalSeconds": 13.200000000000001,
+      "ballSlowSeconds": 54.10000000000286,
+      "teammatesCloseSeconds": 0,
+      "threeAtBallSeconds": 0,
+      "recoveryEntries": 0,
+      "forcedResets": 0,
+      "fallenRobotSeconds": 0,
+      "ballPathMetres": 6.37250945003882,
+      "ballMaxSpeed": 1.780822210582999,
+      "finite": true
+    },
+    {
+      "name": "single-moving",
+      "duration": 60,
+      "players": 1,
+      "kickAttempts": 3,
+      "chargeAttempts": 0,
+      "chargeHits": 0,
+      "kickDistances": [
+        0.150285351608004,
+        0.15355981414855036,
+        0.1540350329008109
+      ],
+      "goals": {
+        "blue": 0,
+        "orange": 0
+      },
+      "firstGoalSeconds": null,
+      "ballSlowSeconds": 44.24000000000132,
+      "teammatesCloseSeconds": 0,
+      "threeAtBallSeconds": 0,
+      "recoveryEntries": 0,
+      "forcedResets": 0,
+      "fallenRobotSeconds": 0,
+      "ballPathMetres": 5.2903066618294154,
+      "ballMaxSpeed": 1.6568364730841094,
+      "finite": true
+    }
+  ],
+  "wallSeconds": 35.279675579,
+  "source": "microduck-soccer-demo/game",
+  "simulationSha256": "345cc7211779d288cadfc0220c8637e5568b5112a81c3f78e16c114f145e7094"
+}

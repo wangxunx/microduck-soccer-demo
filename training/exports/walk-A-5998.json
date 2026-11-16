@@ -1,0 +1,12 @@
+{
+  "id": "genesis-walk-A-5998",
+  "task": "walk (velocity tracking)",
+  "file": "walk-A-5998.onnx",
+  "sha256": "8745fc4fd33f2450c03954fa4078fdafa74af8e339ffc6034b228c1552435ef2",
+  "checkpointIteration": 5998,
+  "robotModel": "walk",
+  "resumedFrom": "../../microduck-rl-genesis/logs/microduck-velocity/model_2999.pt",
+  "recipeOverrides": [],
+  "contract": "61D obs / 14D action / 50 Hz, same as BEST_alpha_walking.onnx",
+  "onnxVsTorchMaxAbs": 4.887580871582031e-06
+}

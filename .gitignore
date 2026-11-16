@@ -24,10 +24,14 @@ training/logs/smoke/
 training/exports/*
 !training/exports/football-v4ft-v3-2998.onnx
 !training/exports/football-v4ft-v3-2998.json
+!training/exports/walk-A-5998.onnx
+!training/exports/walk-A-5998.json
 # evaluation raw data (regenerable): keep game_eval.json + s4_report*
 training/evals/**/*.frames.json
 training/evals/**/s4_mujoco.json
 training/evals/**/s4_genesis.json
+training/evals/**/s1_mujoco.json
+training/evals/**/s1_probe.json
 
 # --- experiments S1-S4: keep scripts, READMEs and reports, drop raw trajectories
 experiments/*/results/*.json
@@ -36,3 +40,6 @@ experiments/*/results/*.json
 !experiments/s3_ball_dynamics/results/crosscheck_wasm.json
 !experiments/s3_ball_dynamics/results/rollfric_calibration.json
 experiments/*/results/_scene_parts/
+
+# Internal planning documents (business-sensitive; repo is public)
+plans/

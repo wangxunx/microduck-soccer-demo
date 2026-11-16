@@ -1,3 +1,22 @@
+diff --git a/scripts/evaluate-football.mjs b/scripts/evaluate-football.mjs
+index ab3b808..88d5a0c 100644
+--- a/scripts/evaluate-football.mjs
++++ b/scripts/evaluate-football.mjs
+@@ -29,6 +29,14 @@ if (process.env.FOOTBALL_CANDIDATE) {
+     currentLimitAmps: Number(process.env.FOOTBALL_CURRENT) || null,
+   };
+ }
++// Optional candidate walking policy (same 61D/14D/50 Hz contract as BEST_alpha_walking.onnx).
++if (process.env.WALK_CANDIDATE) {
++  runtime.policies.walk = await runtime.ort.InferenceSession.create(
++    resolve(process.env.WALK_CANDIDATE),
++    { executionProviders: ["cpu"], intraOpNumThreads: 1, interOpNumThreads: 1 },
++  );
++  console.log("candidate walk:", process.env.WALK_CANDIDATE);
++}
+ const room = createRoom();
+ addPlayer(room, "human", "Player", "blue");
+ syncBots(room);
 diff --git a/src/browser-game.js b/src/browser-game.js
 index bb27508..5263c46 100644
 --- a/src/browser-game.js
@@ -154,10 +173,10 @@ index 7ded828..df5455d 100644
  export async function createPhysicsRuntime(options) {
 diff --git a/src/physics/walk-policy.js b/src/physics/walk-policy.js
 new file mode 100644
-index 0000000..9938401
+index 0000000..75c7627
 --- /dev/null
 +++ b/src/physics/walk-policy.js
-@@ -0,0 +1,21 @@
+@@ -0,0 +1,24 @@
 +// Selectable walking policy (URL ?walk=<key>). Whitelisted: no arbitrary paths.
 +// All variants keep the 61D obs / 14D action / 50 Hz walking contract.
 +// Genesis variants were trained on AMD GPUs with microduck-rl-genesis
@@ -168,6 +187,9 @@ index 0000000..9938401
 +  "genesis-repro": { file: "genesis/velocity-reproduced.onnx", label: "Genesis velocity (复现)" },
 +  "genesis-rough": { file: "genesis/rough.onnx", label: "Genesis rough" },
 +  "genesis-backlash": { file: "genesis/backlash.onnx", label: "Genesis backlash" },
++  // walk v2: genesis velocity run + 3000 iterations (training/train_walk.py, walk-A):
++  // turning tracks commands closely; best match results with the Genesis football policy.
++  "genesis-v2": { file: "genesis/walk-A-5998.onnx", label: "Genesis walk v2" },
 +};
 +export const DEFAULT_WALK = "official";
 +export function resolveWalkPolicy(key) {
