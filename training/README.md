@@ -4,6 +4,8 @@
 
 `microduck-rl-genesis` 只读引用（`soccer_rl/__init__.py`，可用 `MICRODUCK_GENESIS_REPO` 覆盖路径），那个仓库没有任何改动。
 
+> 所有训练过的行走 / 射门模型、评估结果和挑选建议见 **[MODELS.md](MODELS.md)**（模型登记表，持续更新）。
+
 ## 文件
 
 | 文件 | 作用 |
