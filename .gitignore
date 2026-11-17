@@ -48,3 +48,7 @@ experiments/*/results/_scene_parts/
 
 # Internal planning documents (business-sensitive; repo is public)
 plans/
+
+# Learning Wall: rendered videos and intermediate checkpoint exports
+learning_wall/out/
+learning_wall/policies/
