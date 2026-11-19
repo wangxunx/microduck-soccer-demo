@@ -1,6 +1,7 @@
-"""Export a walking checkpoint (train_walk.py run) to a single-file ONNX for the game.
+"""Export a walking or stand-up checkpoint (train_walk.py / train_standup.py run) to a single-file ONNX.
 
     ../../microduck-rl-genesis/.venv/bin/python export_walk.py -e walk-B --ckpt 5998 -o exports/walk-B-5998.onnx
+    ../../microduck-rl-genesis/.venv/bin/python export_walk.py -e stand-A --ckpt 9999 -o exports/stand-A-9999.onnx
 
 The observation normaliser is baked into the graph (same exporter as microduck-rl-genesis);
 the ONNX is verified against the torch actor. Writes <out>.json with provenance.
@@ -65,9 +66,12 @@ def main():
     err = float(np.abs(got - ref).max())
     assert err < 1e-4, err
     sha = hashlib.sha256(out.read_bytes()).hexdigest()
-    meta = {"id": f"genesis-{args.exp_name}-{it}", "task": "walk (velocity tracking)", "file": out.name, "sha256": sha,
+    task = saved.get("task", "walk")
+    meta = {"id": f"genesis-{args.exp_name}-{it}",
+            "task": "get-up / standing (zero command)" if task == "standup" else "walk (velocity tracking)", "file": out.name, "sha256": sha,
             "checkpointIteration": it, "robotModel": saved.get("robot_model"), "resumedFrom": saved.get("resume"),
-            "recipeOverrides": saved.get("overrides"), "contract": "61D obs / 14D action / 50 Hz, same as BEST_alpha_walking.onnx",
+            "recipeOverrides": saved.get("overrides"), "contract": "61D obs / 14D action / 50 Hz, same as BEST_alpha_"
+            + ("stand" if task == "standup" else "walking") + ".onnx",
             "onnxVsTorchMaxAbs": err}
     out.with_suffix(".json").write_text(json.dumps(meta, indent=2) + "\n")
     print(f"wrote {out} (sha256 {sha[:12]}…), ONNX vs torch max |diff| {err:.2e}")

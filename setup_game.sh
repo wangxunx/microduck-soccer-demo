@@ -22,6 +22,7 @@ FOOTBALL=football-v4ft-v3-2998
 FOOTBALL_V5=football-v5-4497
 WALK_V2=walk-A-5998
 WALK_FAST=walk-E3-10996
+STAND=stand-B-9999
 
 if [ -e "$GAME_DIR" ]; then
   echo "error: $GAME_DIR already exists (remove it or set GAME_DIR)" >&2
@@ -48,6 +49,7 @@ cp "$HERE/training/exports/$FOOTBALL.onnx" "$HERE/training/exports/$FOOTBALL.jso
 cp "$HERE/training/exports/$WALK_V2.onnx" "$HERE/training/exports/$WALK_V2.json" "$DST/"       # walking v2 (?walk=genesis-v2)
 cp "$HERE/training/exports/$WALK_FAST.onnx" "$HERE/training/exports/$WALK_FAST.json" "$DST/"   # fast gait (?walk=genesis-fast)
 cp "$HERE/training/exports/$FOOTBALL_V5.onnx" "$HERE/training/exports/$FOOTBALL_V5.json" "$DST/" # kicking v5 (?football=genesis-v5)
+cp "$HERE/training/exports/$STAND.onnx" "$HERE/training/exports/$STAND.json" "$DST/"           # get-up / stand (?stand=genesis)
 
 echo "== npm ci"
 (cd "$GAME_DIR" && npm ci --silent)
@@ -56,5 +58,5 @@ cat <<EOF
 
 Done. Run the game:
   cd $GAME_DIR && npm run dev
-  open http://localhost:5173/?lang=en&walk=genesis-v2&football=genesis-v5
+  open http://localhost:5173/?lang=en&walk=genesis-v2&football=genesis-v5&stand=genesis
 EOF

@@ -1,0 +1,15 @@
+{
+  "id": "genesis-stand-B-9999",
+  "task": "get-up / standing (zero command)",
+  "file": "stand-B-9999.onnx",
+  "sha256": "5a2fc5425a08eb38d0f340e410642eeaee6bc097c91b51e3da34fffd86159d93",
+  "checkpointIteration": 9999,
+  "robotModel": "allcollisions",
+  "resumedFrom": null,
+  "recipeOverrides": [
+    "DROP_PROB=0.15",
+    "HANDOFF_PROB=0.10"
+  ],
+  "contract": "61D obs / 14D action / 50 Hz, same as BEST_alpha_stand.onnx",
+  "onnxVsTorchMaxAbs": 3.0994415283203125e-06
+}

@@ -1,0 +1,227 @@
+{
+ "meta": {
+  "task": "standup",
+  "robot_model": "allcollisions",
+  "resume": null,
+  "curriculum_start_iter": 0,
+  "overrides": []
+ },
+ "standup_cfg": {
+  "NUM_STEPS_PER_ENV": 24,
+  "EPISODE_LENGTH_S": 6.0,
+  "SIT_Z": 0.06,
+  "STAND_Z": 0.115,
+  "LEG_IDS": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   9,
+   10,
+   11,
+   12,
+   13
+  ],
+  "NECK_IDS": [
+   5,
+   6,
+   7,
+   8
+  ],
+  "SITTING_JOINT_OVERRIDES": {
+   "1": 0.0,
+   "2": -0.4079,
+   "3": 1.35,
+   "4": 0.0,
+   "10": 0.0,
+   "11": 0.4079,
+   "12": -1.35,
+   "13": 0.0
+  },
+  "FAMILIES": [
+   "face_down",
+   "face_up",
+   "sitting",
+   "standing",
+   "drop",
+   "handoff"
+  ],
+  "MIX_STAGES": [
+   [
+    0,
+    {
+     "standing": 0.4,
+     "sitting": 0.4,
+     "face_down": 0.2,
+     "face_up": 0.0
+    }
+   ],
+   [
+    14400,
+    {
+     "standing": 0.25,
+     "sitting": 0.3,
+     "face_down": 0.35,
+     "face_up": 0.1
+    }
+   ],
+   [
+    36000,
+    {
+     "standing": 0.2,
+     "sitting": 0.25,
+     "face_down": 0.3,
+     "face_up": 0.25
+    }
+   ],
+   [
+    60000,
+    {
+     "standing": 0.15,
+     "sitting": 0.2,
+     "face_down": 0.3,
+     "face_up": 0.35
+    }
+   ]
+  ],
+  "GAME_FAMILY_START_STEP": 14400,
+  "DROP_PROB": 0.0,
+  "HANDOFF_PROB": 0.0,
+  "PRONE_Z": [
+   0.05,
+   0.09
+  ],
+  "FACE_UP_ROLL_MAX": 1.5707963267948966,
+  "SITTING_JOINT_NOISE_STD": 0.12,
+  "UPRIGHT_TILT_MAX": 0.17453292519943295,
+  "SITTING_Z": [
+   0.05,
+   0.09
+  ],
+  "STANDING_Z": [
+   0.11,
+   0.12
+  ],
+  "DROP_Z": [
+   0.1,
+   0.16
+  ],
+  "DROP_JOINT_NOISE_STD": 0.25,
+  "HANDOFF_TILT_MAX": 0.2617993877991494,
+  "HANDOFF_Z": [
+   0.105,
+   0.12
+  ],
+  "HANDOFF_LEG_NOISE_STD": 0.25,
+  "HANDOFF_LIN_VEL": 0.15,
+  "HANDOFF_ANG_VEL": 1.0,
+  "SEED_LAST_ACTION": true,
+  "REWARD_WEIGHTS": {
+   "pose_stand_legs": 2.0,
+   "head_pose_tracking": 0.75,
+   "pose_stand_l1": 1.25,
+   "height_stand": 1.0,
+   "height_stand_sharp": 1.0,
+   "height_stand_l1": 7.5,
+   "com_upward_velocity": 0.75,
+   "gentle_rise": 0.005,
+   "arrival_damping": 0.0,
+   "upright_linear": 1.5,
+   "upright_sharp": 1.5,
+   "standing_composite": 3.75,
+   "action_rate_l2": -0.1,
+   "joint_torque_rate_l2": 0.0,
+   "body_ang_vel": -0.05,
+   "angular_momentum": -0.02,
+   "dof_pos_limits": -1.0,
+   "self_collisions": -1.0
+  },
+  "REWARD_PARAMS": {
+   "pose_legs_std": 0.5,
+   "head_pose_std": 0.5,
+   "height_std": 0.04,
+   "height_sharp_std": 0.015,
+   "upward_max_height": 0.125,
+   "arrival_height": [
+    0.09,
+    0.11
+   ],
+   "arrival_tilt_deg": [
+    20.0,
+    45.0
+   ],
+   "upright_sharp_std": 0.3,
+   "composite_height_std": 0.04,
+   "composite_upright_std": 0.4,
+   "composite_pose_std": 0.4
+  },
+  "ACTION_RATE_WEIGHT_STAGES": [
+   [
+    0,
+    -0.1
+   ],
+   [
+    12000,
+    -0.2
+   ],
+   [
+    18000,
+    -0.4
+   ],
+   [
+    24000,
+    -0.6
+   ],
+   [
+    30000,
+    -0.8
+   ],
+   [
+    36000,
+    -1.0
+   ]
+  ],
+  "ARRIVAL_DAMPING_WEIGHT_STAGES": [
+   [
+    0,
+    0.0
+   ],
+   [
+    72000,
+    -0.025
+   ],
+   [
+    96000,
+    -0.05
+   ]
+  ],
+  "TORQUE_RATE_WEIGHT_STAGES": [
+   [
+    0,
+    0.0
+   ],
+   [
+    72000,
+    -0.001
+   ]
+  ],
+  "PUSH_RANGE_STAGES": [
+   [
+    0,
+    0.0
+   ],
+   [
+    12000,
+    0.08
+   ],
+   [
+    24000,
+    0.3
+   ]
+  ],
+  "RECOVERED_GRAVITY_Z": -0.88,
+  "RECOVERED_HEIGHT": 0.08,
+  "MAX_COLLISION_PAIRS": 100
+ }
+}

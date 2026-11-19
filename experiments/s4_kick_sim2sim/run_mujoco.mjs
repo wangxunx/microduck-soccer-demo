@@ -23,6 +23,12 @@ if (process.env.FOOTBALL_CANDIDATE) {
   runtime.footballInfo = { ...manifest, id: manifest.id || onnx };
   console.log("candidate football:", runtime.footballInfo.id);
 }
+for (const [env, key] of [["STAND_CANDIDATE", "stand"], ["WALK_CANDIDATE", "walk"]])
+  if (process.env[env]) {
+    runtime.policies[key] = await runtime.ort.InferenceSession.create(resolve(process.env[env]),
+      { executionProviders: ["cpu"], intraOpNumThreads: 1, interOpNumThreads: 1 });
+    console.log(`candidate ${key}:`, process.env[env]);
+  }
 const protocols = process.env.S4_PROTOCOLS?.split(",");
 const orig = { football: runtime.policies.football, info: runtime.footballInfo };
 const FIELD = { halfLength: 40, halfWidth: 40, goalHalfWidth: 0.36, goalDepth: 0.24,

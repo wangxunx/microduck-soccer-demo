@@ -4,7 +4,7 @@
 
 `microduck-rl-genesis` 只读引用（`soccer_rl/__init__.py`，可用 `MICRODUCK_GENESIS_REPO` 覆盖路径），那个仓库没有任何改动。
 
-> 所有训练过的行走 / 射门模型、评估结果和挑选建议见 **[MODELS.md](MODELS.md)**（模型登记表，持续更新）。
+> 所有训练过的行走 / 射门 / 起身模型、评估结果和挑选建议见 **[MODELS.md](MODELS.md)**（模型登记表，持续更新）。
 
 ## 文件
 
@@ -103,3 +103,17 @@ HIP_VISIBLE_DEVICES=1 $PY train_football.py -e football-v1 -B 4096 --max-iterati
 - 已加入游戏：`?walk=genesis-v2`（即 walk-A，`exports/walk-A-5998.onnx`）。
 - 收紧跟踪的 std 会让转向能力消失。前进速度卡在约 0.1 m/s，限制来自步态相关的奖励设置，放宽后（D2）速度提高约 2.3 倍。
 - D2 在比赛里表现差，原因是射门模型只在"标准站姿、静止"状态下训练过，D2 停到球前时的姿态和转动它应付不了。下一步：训练射门时先让行走策略走一段，再接射门。
+
+## 起身 / 站立训练（2026-11-17）
+
+上游 microduck_rl 的 stand-up 任务（游戏里 `BEST_alpha_stand.onnx` 的来源）移植到 Genesis，目标是让行走、射门、起身全部由 AMD 训练。
+
+| 文件 | 作用 |
+|---|---|
+| `soccer_rl/standup_cfg.py` | 配方：上游奖励和课程，以及与上游的差异（游戏全碰撞模型、可选的随机掉落 / 射门结束起始姿态、上一帧动作初始化为 q − HOME） |
+| `soccer_rl/standup_env.py` | `MicroduckStandUpEnv`（继承 `MicroduckVelocityEnv`）：所有指令为 0；按起始姿态类别记录起身成功率和用时 |
+| `train_standup.py` | 训练（`--set` 覆盖配方，每 250 轮存一次） |
+| `evaluate_stand.sh` / `summarize_stand_eval.py` | S6 起身测试 + 射门交接 + 两套组合打比赛，见 MODELS.md §2.4 |
+
+- stand-A（上游原配方）学不会从躺倒起身；stand-B（加 15% 随机姿态掉落、10% 射门结束姿态）第 2000 轮就全部学会。
+- 已加入游戏：`?stand=genesis`（`exports/stand-B-9999.onnx`）。

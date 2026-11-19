@@ -1,10 +1,10 @@
-# 模型登记表（行走 / 射门）
+# 模型登记表（行走 / 射门 / 起身）
 
-本文件记录在 AMD GPU（Genesis + ROCm）上训练的所有行走和射门模型，包括每个版本的来历、改动、评估结果和结论，方便日后挑选模型、了解开发历史。**每训练或评估一个新版本，都要在这里登记**（见 §6）。
+本文件记录在 AMD GPU（Genesis + ROCm）上训练的所有行走、射门和起身模型，包括每个版本的来历、改动、评估结果和结论，方便日后挑选模型、了解开发历史。**每训练或评估一个新版本，都要在这里登记**（见 §6）。
 
 - 训练硬件：AMD Radeon AI PRO R9700 单卡，每次训练 4096 个并行环境
 - 指标由 [`collect_metrics.py`](collect_metrics.py) 从 `evals/` 统一重新计算，不要手抄
-- 最后更新：2026-11-16（E 系列快步态）
+- 最后更新：2026-11-17（起身 / 站立模型 stand-B）
 
 **状态图例**：✅ 推荐　🟡 可用（有特定用途）　🔬 实验（有价值但还不能直接用）　❌ 淘汰　📌 基线（对照用）
 
@@ -19,6 +19,9 @@
 | 官方行走 + 已上线的稳妥射门 | 官方 | football-v4ft-v3 | `?football=genesis` | 68 球，踢球跌倒 0 |
 | 走得快（展台观感） | walk-E3 | football-v5 | `?walk=genesis-fast&football=genesis-v5` | 速度约为 walk-A 的 2 倍，单人场景射门→进球 94%、0 次跌倒；单人射门次数少约 25%，2v2 波动大 |
 | 原作者原版（对照） | 官方 | 原作者 football | 不加参数 | 61 球，总跌倒 10 |
+| **全部技能都由 AMD 训练** | walk-A | football-v5 | `?walk=genesis-v2&football=genesis-v5&stand=genesis` | 起身用 stand-B：90 球，射门→进球 94%，总跌倒 3，强制归位 0；单人场景与官方起身完全相同（44 球）。只有舞蹈仍是官方模型 |
+
+**起身模型**（`?stand=`）可以和任何行走 / 射门组合搭配，见 §2.4。
 
 **搭配注意**：football-v5 只能配 Genesis 训练的行走。配官方行走时是 62 球、24 次跌倒、3 次强制归位，游戏顶部的标签会变成橙色警告。
 
@@ -107,6 +110,22 @@
 | walk-D2 + v5 | 30 | 32 | 94% | 0 | 15 | 50% | 6 |
 | 官方 + v5 | 35 | 40 | 88% | 0 | 27 | 93% | 24 |
 
+### 2.4 起身 / 站立（stand：跌倒后起身，以及射门后 1 秒的平衡交接）
+
+游戏里 `stand` 模型有两个用途：机器人倒地 0.28 s 后先保持 0.22 s，再由 `stand` 把它扶起来，直立 0.6 s 后交还给行走；以及学习型射门结束后的 1 秒平衡。评估见 §3 的 `evaluate_stand.sh`（数字由 `summarize_stand_eval.py` 生成）。
+
+| 版本 | 状态 | 一句话 | 起身测试：成功 / 强制归位 / 再次跌倒 | 起身用时 中位 / 最慢 | 配 walk-A：成功 / 强制归位 | 射门交接倾角（v4ft / v5+walk-A） | 原作者组合比赛：进球 / 跌倒 / 归位 | 全 AMD 组合：进球 / 射门→进球 / 跌倒 / 归位 |
+|---|---|---|---:|---:|---:|---:|---:|---:|
+| 官方 BEST_alpha_stand | 📌 | Pollen 在 mjlab 上训练 | 59/59 / 0 / 3 | 0.62 s / 4.60 s | 55/58 / **3** | 12.5° / 12.1° | 61 / 10 / 0 | 93 / 96% / 2 / 0 |
+| stand-A | ❌ | 上游配方原样移植；4500 轮仍学不会从躺倒起身 | – | – | – | – | – | – |
+| stand-B-2000 | 🔬 | B 的早期 checkpoint | 59/59 / 0 / 0 | 0.66 s / 1.68 s | 58/58 / 0 | 12.6° / 12.4° | 62 / 12 / 0 | 93 / 96% / 2 / 0 |
+| stand-B-4500 | 🔬 | 起身更快，交还行走后更稳 | 59/59 / 0 / 1 | 0.58 s / 1.26 s | 58/58 / 0 | 13.1° / 12.8° | 47 / 9 / 0 | 92 / 95% / 2 / 0 |
+| **stand-B-9999** | ✅ | 已上线 `?stand=genesis`；**没有一次失败，最慢 0.84 s** | **59/59 / 0 / 0** | 0.62 s / **0.84 s** | **58/58 / 0** | 12.7° / 12.4° | 60 / 10 / 0 | 90 / 94% / 3 / 0 |
+
+- **起身测试**（S6，60 个用例，游戏 MuJoCo + 游戏真实的倒地 → 起身 → 交还行走流程）：趴、仰、左右侧躺、坐姿各 4 个朝向，24 个随机姿态掉落，16 个 1.2 m/s 侧推。"再次跌倒"= 交还行走后又倒下；"强制归位"= 7 s 内没站起来，游戏把机器人瞬移复位。
+- **配 walk-A 时官方模型会失败 3 次**：倒地后前 0.28 s 仍由行走模型控制腿，walk-A 留下的姿态官方起身模型不一定能处理。stand-B 在训练里见过随机姿态掉落，60 个用例全部成功。
+- 比赛的总进球差异来自 2v2（同一局里的微小差异会导致完全不同的走向）；**8 个单人场景的进球与官方完全相同**（原作者组合 29–31 球，全 AMD 组合 44 球），跌倒和归位次数也没有变差。
+
 ---
 
 ## 3. 评估协议
@@ -117,7 +136,8 @@
 |---|---|---|
 | 射门 | `./evaluate_candidate.sh <exp> <ckpt> <gpu>` | 导出 ONNX + manifest；S4 的 18 个用例在两个引擎里各跑一遍；游戏评估器 11 个场景（配官方行走） |
 | 行走 | `./evaluate_walk.sh <exp> <ckpt>` | S1 的 14 个场景 + 从静止出发的 19 个指令扫描（游戏 MuJoCo）；配射门模型打比赛（默认 v4ft-v3，可用 `FOOTBALL_ONNX=` 换） |
-| 汇总 | `collect_metrics.py` | 重新算出本文所有表格的数字 |
+| 起身 | `./evaluate_stand.sh <exp> <ckpt>` | S6 起身测试 60 个用例（游戏默认行走和 walk-A 各一遍）；S4 射门交接（v4ft、v5+walk-A）；两套组合打比赛（原作者组合只换起身模型；全 AMD 组合 walk-A + v5） |
+| 汇总 | `collect_metrics.py` / `summarize_stand_eval.py` | 重新算出本文所有表格的数字 |
 
 **指标定义**（与 `collect_metrics.py` 一致）：
 - **射门→进球**：射门后 5 秒内有进球的比例
@@ -240,6 +260,22 @@
 
 **walk-D3**（🔬）：从 walk-A 继续 3000 轮。步频窗口放宽到 0.4 s，抬脚高度和摆动高度目标 2 → 3 cm，前进跟踪权重 2 → 3。速度 0.166 m/s，转向好。文件 sha `d23e319d`，只在本地。
 
+### 起身
+
+**官方 BEST_alpha_stand**（📌 基线）：上游 microduck_rl 的 stand-up 任务（wandb 69u48n8l，model_9750），mjlab 上训练。
+
+**stand-A**（❌）
+- 改动：上游 `microduck_standup_env_cfg.py` 移植到 Genesis（`soccer_rl/standup_cfg.py` + `standup_env.py`），去掉游戏用不到的身体 / 头部姿态指令；用游戏的全碰撞模型（上游用身体无摩擦的 groundcontact 模型）
+- 起始姿态课程与上游相同：站立 / 坐姿 / 趴 / 仰（仰躺从第 600 轮开始出现）
+- 结论：会站稳、会从坐姿站起，但 4500 轮后仍 0% 从躺倒起身（上游注释里记录过同样的"什么都不做"局部最优）。已停止，只在本地
+
+**stand-B**（✅ 9999 已上线 `?stand=genesis`）
+- 改动：stand-A + 两类游戏里常见的起始姿态（第 600 轮起）：随机朝向掉落 15%（`DROP_PROB=0.15`），射门结束姿态（身体倾斜 ±15°、腿部关节扰动、带初速度）10%（`HANDOFF_PROB=0.10`）
+- 训练：4096 环境 × 10000 轮，6 h（单卡 R9700）。文件 `exports/stand-B-9999.onnx`（sha `5a2fc542`，已提交；`logs/stand-B/model_9999.pt` 也已提交）；2000 / 4500 轮的导出 sha `3827e2a4` / `0d9926d1`，只在本地
+- 结论：随机掉落相当于自带的"由易到难"课程，第 2000 轮时所有起始姿态在 Genesis 里已 100% 起身。游戏里 60 个起身用例全部成功（两种行走都是），0 次强制归位、0 次再次跌倒，最慢 0.84 s（官方 4.6 s，配 walk-A 时官方有 3 次强制归位）；射门交接倾角与官方相同；比赛单人场景进球与官方完全相同
+- 已知差异：交还行走后 2 s 内的最大倾角中位数约 16°（官方约 14°）
+- 复现性：换随机种子重训（stand-B2，seed 2），第 5000 轮时同样 100% 起身
+
 ---
 
 ## 5. 迭代时间线和关键教训
@@ -255,13 +291,14 @@
 | 11-16 | football v5 用前置行走训练：walk-A + v5 进 93 球 | 行走和射门要配套训练、配套评估 |
 | 11-16 | D2 碰球的主要原因是停不住（AI 已下令停止时仍以约 0.17 m/s 移动）；E 系列用更频繁的指令切换训练，E3 的停步和转向达到 walk-A 水平 | 训练时的指令变化频率要接近游戏 AI 的实际用法；停步指标已纳入标准评估 |
 | 11-16 | v6 / v6-E3 和游戏 AI 调参都没能让 E3 的比赛进球明显提高；拆分后发现 E3 单人准确率与 walk-A 持平，差距来自对称的 2v2 | 比较行走模型看单人场景；2v2 的总进球会把"更好的防守"算成退步 |
+| 11-17 | 起身：上游配方原样移植（stand-A）学不会从躺倒起身；加入随机姿态掉落（stand-B）后 2000 轮就全部学会，10000 轮的版本在游戏里 60/60 成功。walk + 射门 + 起身全部由 AMD 训练 | 起始姿态的分布比奖励细节更重要；评估起身要连同前面的行走一起测（官方起身配 walk-A 会失败 3 次） |
 
 ---
 
 ## 6. 如何登记新版本
 
 1. **命名**：`<任务>-<变体>`，例如 `football-v6`、`walk-E1`；导出文件为 `<名字>-<checkpoint>.onnx`。fine-tune 版本用 `ft` 标出基于谁，例如 `v4ft-v3`。
-2. **训练**：用 `train_football.py` 或 `train_walk.py`，配方改动一律用 `--set`。配方会自动存到 `logs/<run>/recipe.json`。
+2. **训练**：用 `train_football.py`、`train_walk.py` 或 `train_standup.py`，配方改动一律用 `--set`。配方会自动存到 `logs/<run>/recipe.json`。
 3. **评估**：按 §3 跑完；射门模型还要和推荐的行走组合测一次（`FOOTBALL_ONNX=... ./evaluate_walk.sh --onnx walk-A-5998 exports/walk-A-5998.onnx`）。
 4. **更新本文件**：
    - 运行 `collect_metrics.py`，把新数字填进 §2 的表（只用脚本算出的数字）
@@ -280,7 +317,7 @@
 
 ## 7. 文件与复现
 
-- **已提交**（公开仓库）：`exports/` 里的 football-v4ft-v3-2998、football-v5-4497、walk-A-5998（ONNX + json），`logs/football-v4ft-v3/model_2998.pt`，以及所有版本的 `logs/*/recipe.json` 和 `evals/**/game_eval.json`。
+- **已提交**（公开仓库）：`exports/` 里的 football-v4ft-v3-2998、football-v5-4497、walk-A-5998、walk-E3-10996、stand-B-9999（ONNX + json），`logs/football-v4ft-v3/model_2998.pt`、`logs/stand-B/model_9999.pt`，以及所有版本的 `logs/*/recipe.json` 和 `evals/**/game_eval.json`。
 - **只在本地**：其余 checkpoint（`logs/*/model_*.pt`，共 1 GB 以上）和其余导出文件。需要时可以从本地 checkpoint 重新导出（`export_football.py` / `export_walk.py`）。
 - **按版本复现训练**：在当前默认配方（= v2a）的基础上用 `--set` 加上该版本的改动。以 v5 为例：
 
@@ -289,4 +326,12 @@ HIP_VISIBLE_DEVICES=1 ../../microduck-rl-genesis/.venv/bin/python train_football
   --max-iterations 1500 --resume logs/football-v4ft-v3/model_2998.pt \
   --set HANDOFF_IN_LOOP=true --set PREROLL=true --set REWARD_WEIGHTS.yaw_change=-1 \
   --set REWARD_WEIGHTS.ball_overshoot=-10 --set REWARD_WEIGHTS.ball_lateral=-6
+```
+
+起身模型 stand-B：
+
+```bash
+HIP_VISIBLE_DEVICES=0 ../../microduck-rl-genesis/.venv/bin/python train_standup.py -e stand-B -B 4096 \
+  --max-iterations 10000 --set DROP_PROB=0.15 --set HANDOFF_PROB=0.10
+./evaluate_stand.sh stand-B 9999
 ```

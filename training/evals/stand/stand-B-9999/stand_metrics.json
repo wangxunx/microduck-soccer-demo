@@ -1,0 +1,68 @@
+{
+ "getup": {
+  "n": 60,
+  "fell": 59,
+  "recovered": 59,
+  "resets": 0,
+  "relapse": 0,
+  "t_up": "0.62",
+  "t_up_max": 0.8400000000000001,
+  "tilt_after": "15.81",
+  "upright_end": 60
+ },
+ "getup_walkA": {
+  "n": 60,
+  "fell": 58,
+  "recovered": 58,
+  "resets": 0,
+  "relapse": 0,
+  "t_up": "0.62",
+  "t_up_max": 0.9400000000000001,
+  "tilt_after": "15.79",
+  "upright_end": 60
+ },
+ "s4_v4ft": {
+  "tilt": 12.659223056471262,
+  "tilt_max": 13.85141628277946,
+  "falls": 0,
+  "n": 18
+ },
+ "s4_v5_walkA": {
+  "tilt": 12.409684123751635,
+  "tilt_max": 12.899145676589004,
+  "falls": 0,
+  "n": 18
+ },
+ "match_author": {
+  "goals": 60,
+  "kicks": 70,
+  "falls": 10,
+  "resets": 0,
+  "kick_to_goal": 0.8428571428571429,
+  "kick_falls": 1,
+  "single_goals": 29,
+  "single_kicks": 35,
+  "single_kick_to_goal": 0.8285714285714286,
+  "single_falls": 1,
+  "2v2_goals": 31,
+  "2v2_kicks": 35,
+  "2v2_kick_to_goal": 0.8571428571428571,
+  "2v2_falls": 9
+ },
+ "match_amd": {
+  "goals": 90,
+  "kicks": 97,
+  "falls": 3,
+  "resets": 0,
+  "kick_to_goal": 0.9375,
+  "kick_falls": 0,
+  "single_goals": 44,
+  "single_kicks": 48,
+  "single_kick_to_goal": 0.9166666666666666,
+  "single_falls": 0,
+  "2v2_goals": 46,
+  "2v2_kicks": 48,
+  "2v2_kick_to_goal": 0.9583333333333334,
+  "2v2_falls": 3
+ }
+}

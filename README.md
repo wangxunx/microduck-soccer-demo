@@ -11,16 +11,19 @@ unchanged, into the game's MuJoCo runtime.
 
 **Status:** in the game's built-in evaluator (11 scenarios, single run) the AMD-trained kicking policy
 `football-v4ft-v3-2998` scored 68 goals with 0 kick-induced falls, versus 61 goals / 0 falls for the
-game's original kicking policy. Only the **walking** and **kicking** policies are trained on AMD; the
-game's stand-up / recovery and dance policies are the originals.
+game's original kicking policy. The **walking**, **kicking** and **stand-up / recovery** policies are
+trained on AMD and selectable in the game (`?walk=genesis-v2&football=genesis-v5&stand=genesis`); the
+AMD-trained stand-up policy `stand-B-9999` recovered in all 60 cases of our get-up test in the game's
+MuJoCo (the original: 59/59 with the game's default walk, 55/58 with walk-A). The dance policy is the
+original. Model registry: [training/MODELS.md](training/MODELS.md).
 
 ## Layout
 
 | Path | What |
 |---|---|
 | [`training/`](training/README.md) | Genesis football environment, recipe, PPO training (rsl-rl), ONNX export, deployment-contract test, one-command evaluation, training history |
-| [`experiments/`](experiments/) | Feasibility studies S1–S4: walking sim2sim (Genesis ↔ MuJoCo), Genesis throughput with ball, ball dynamics calibration, kick sim2sim |
-| [`game-patches/`](game-patches/) | Our changes to the game: `?walk=` and `?football=` URL switches to select AMD-trained policies |
+| [`experiments/`](experiments/) | Feasibility studies S1–S4: walking sim2sim (Genesis ↔ MuJoCo), Genesis throughput with ball, ball dynamics calibration, kick sim2sim; S5 match spike; S6 get-up / recovery test in the game's MuJoCo |
+| [`game-patches/`](game-patches/) | Our changes to the game: `?walk=`, `?football=` and `?stand=` URL switches to select AMD-trained policies |
 | [`setup_game.sh`](setup_game.sh) | Recreates `game/` from the pinned upstream commit + our patch + the trained policies |
 
 ## Quick start
@@ -32,7 +35,7 @@ git clone https://github.com/Macmachi/microduck-rl-genesis.git ../microduck-rl-g
 
 # 1. the game, with the AMD-trained policies selectable
 ./setup_game.sh
-cd game && npm run dev     # http://localhost:5173/?walk=genesis-v2&football=genesis-v5
+cd game && npm run dev     # http://localhost:5173/?walk=genesis-v2&football=genesis-v5&stand=genesis
 
 # 2. training (one AMD GPU)
 cd training
